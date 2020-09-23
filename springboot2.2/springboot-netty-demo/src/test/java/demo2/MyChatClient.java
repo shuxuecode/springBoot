@@ -14,6 +14,10 @@ import java.io.InputStreamReader;
 public class MyChatClient {
 
     public static void main(String[] args) {
+        new MyChatClient().connect();
+    }
+
+    public void connect() {
         EventLoopGroup eventLoopGroup = new NioEventLoopGroup();
 
         try {
@@ -36,6 +40,9 @@ public class MyChatClient {
             e.printStackTrace();
         } finally {
             eventLoopGroup.shutdownGracefully();
+            System.out.println("链接关闭了");
+            connect();
         }
     }
+
 }

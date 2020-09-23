@@ -2,10 +2,13 @@ package demo2;
 
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.EventLoop;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.channel.group.ChannelGroup;
 import io.netty.channel.group.DefaultChannelGroup;
 import io.netty.util.concurrent.GlobalEventExecutor;
+
+import java.util.concurrent.TimeUnit;
 
 public class MyChatServerHandler extends SimpleChannelInboundHandler<String> {
 
@@ -14,7 +17,7 @@ public class MyChatServerHandler extends SimpleChannelInboundHandler<String> {
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
         Channel channel = ctx.channel();
-
+        System.out.println("收到消息：" + msg);
         channelGroup.forEach((ch) -> {
             if (channel != ch) {
                 ch.writeAndFlush(channel.remoteAddress() + " 发送的消息： " + msg + " \n");
