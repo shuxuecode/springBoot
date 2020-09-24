@@ -45,9 +45,12 @@ public class ClientHandler5 extends SimpleChannelInboundHandler<String> {
                 // 如果写通道处于空闲状态就发送心跳命令
                 System.out.println("写空闲，准备发送心跳");
 //                ctx.channel().writeAndFlush(HEARTBEAT_SEQUENCE.duplicate());
-                channel.writeAndFlush(HEARTBEAT_SEQUENCE.duplicate());
+//                channel.writeAndFlush(HEARTBEAT_SEQUENCE.duplicate());
 //                ctx.writeAndFlush("heart beat ... ");
 //                channel.writeAndFlush("heart beat ... " + "\r\n");
+
+                channel.writeAndFlush("heartbeat from " + channel.remoteAddress() + " to " + channel.localAddress());
+
 
             }
 

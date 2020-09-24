@@ -61,23 +61,27 @@ public class ServerHandler5 extends SimpleChannelInboundHandler<String> {
 
     @Override
     public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
-        IdleStateEvent event = (IdleStateEvent) evt;
-        String eventType = null;
-        switch (event.state()) {
-            case READER_IDLE:
-                eventType = "读空闲";
+
+        if (evt instanceof IdleStateEvent) {
+            IdleStateEvent event = (IdleStateEvent) evt;
+            String eventType = null;
+            switch (event.state()) {
+                case READER_IDLE:
+                    eventType = "读空闲";
 //                readIdleTimes ++; // 读空闲的计数加1
-                break;
-            case WRITER_IDLE:
-                eventType = "写空闲";
-                // 不处理
-                break;
-            case ALL_IDLE:
-                eventType = "读写空闲";
-                // 不处理
-                break;
+                    break;
+                case WRITER_IDLE:
+                    eventType = "写空闲";
+                    // 不处理
+                    break;
+                case ALL_IDLE:
+                    eventType = "读写空闲";
+                    // 不处理
+                    break;
+            }
+            System.out.println(ctx.channel().remoteAddress() + " 超时事件：" + eventType);
         }
-        System.out.println(ctx.channel().remoteAddress() + " 超时事件：" + eventType);
+
 
     }
 
