@@ -1,6 +1,5 @@
 package demo5;
 
-import demo2.MyChatServerInitializer;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.EventLoopGroup;

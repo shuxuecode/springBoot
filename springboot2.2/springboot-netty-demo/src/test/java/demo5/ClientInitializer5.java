@@ -1,11 +1,8 @@
 package demo5;
 
-import demo2.MyChatClientHandler;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;
-import io.netty.handler.codec.DelimiterBasedFrameDecoder;
-import io.netty.handler.codec.Delimiters;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
 import io.netty.handler.timeout.IdleStateHandler;
@@ -25,7 +22,7 @@ public class ClientInitializer5 extends ChannelInitializer<SocketChannel> {
 
         pipeline.addLast(new IdleStateHandler(0, 4, 0, TimeUnit.SECONDS));
 
-        pipeline.addLast(new ClientHandler5());
+//        pipeline.addLast(new ClientHandler5());
 
     }
 }

@@ -11,6 +11,12 @@ import io.netty.util.CharsetUtil;
 
 public class ClientHandler5 extends SimpleChannelInboundHandler<String> {
 
+    private NettyClient5 client;
+
+    public ClientHandler5(NettyClient5 client) {
+        this.client = client;
+    }
+
     /**
      * 客户端请求的心跳命令
      */
@@ -32,6 +38,8 @@ public class ClientHandler5 extends SimpleChannelInboundHandler<String> {
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
         Channel channel = ctx.channel();
         System.out.println("client 连接失败");
+
+        client.doConnect();
     }
 
     @Override
