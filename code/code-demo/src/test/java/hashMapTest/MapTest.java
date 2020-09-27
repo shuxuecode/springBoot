@@ -1,5 +1,7 @@
 package hashMapTest;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -151,5 +153,7 @@ public class MapTest {
     public static void main(String[] args) {
         new MapTest();
     }
+
+
 
 }
