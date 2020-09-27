@@ -5,14 +5,17 @@ import org.junit.jupiter.api.Test;
 public class Test1 {
 
     @Test
-    public void test2(){
+    public void test2() {
+
+        int i = 4;
+        System.out.println(Integer.toBinaryString(i));
 
     }
 
     @Test
     public void test1() {
 
-        for (int i = 10; i < 100; i+=5) {
+        for (int i = 10; i < 100; i += 5) {
             int cap = i;
 
             int n = cap - 1;
