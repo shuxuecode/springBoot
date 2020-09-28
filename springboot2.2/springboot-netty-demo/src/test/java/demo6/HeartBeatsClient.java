@@ -2,6 +2,8 @@ package demo6;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.*;
+import io.netty.channel.group.ChannelGroup;
+import io.netty.channel.group.DefaultChannelGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.string.StringDecoder;
@@ -10,7 +12,11 @@ import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
 import io.netty.handler.timeout.IdleStateHandler;
 import io.netty.util.HashedWheelTimer;
+import io.netty.util.concurrent.GlobalEventExecutor;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.concurrent.TimeUnit;
 
 public class HeartBeatsClient {
@@ -60,6 +66,13 @@ public class HeartBeatsClient {
             }
 
             future.sync();
+
+            Channel channel = future.channel();
+
+            System.out.println(channel);
+            channel.writeAndFlush("test msg");
+            System.out.println(channel);
+
         } catch (Throwable t) {
 //            todo
             timer.newTimeout(watchdog, 2, TimeUnit.SECONDS);
@@ -70,7 +83,20 @@ public class HeartBeatsClient {
 
 
     public static void main(String[] args) throws Exception {
-        new HeartBeatsClient().connect("127.0.0.1", 8899);
+        HeartBeatsClient client = new HeartBeatsClient();
+        client.connect("127.0.0.1", 8899);
+
+//        for (int i = 0; i < 100; i++) {
+//            if (channel != null && channel.isActive()) {
+//                channel.writeAndFlush("test msg -> " + i + " " + "\r\n");
+//            }
+//        }
+
+//        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//        for (;;){
+//            channel.writeAndFlush(br.readLine() + "\r\n");
+//        }
+
     }
 
 }

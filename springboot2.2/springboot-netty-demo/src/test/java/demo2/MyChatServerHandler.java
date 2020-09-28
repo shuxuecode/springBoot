@@ -25,7 +25,6 @@ public class MyChatServerHandler extends SimpleChannelInboundHandler<String> {
                 ch.writeAndFlush("【自己】 " + msg + "\n");
             }
         });
-
     }
 
     // 连接建立
