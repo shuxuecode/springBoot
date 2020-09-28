@@ -13,7 +13,8 @@ public class Test1 {
             System.out.print(n);
             System.out.print(" ===  ");
             System.out.println(Integer.toBinaryString(n));
-            n |= n >>> 1;
+            // TODO zsx 
+            n = n | n >>> 1;
         }
 
     }
