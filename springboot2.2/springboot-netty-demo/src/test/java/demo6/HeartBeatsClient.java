@@ -46,6 +46,7 @@ public class HeartBeatsClient {
 
         ChannelFuture future;
 
+
         try {
             synchronized (bootstrap) {
                 bootstrap.handler(new ChannelInitializer<Channel>() {
@@ -60,6 +61,8 @@ public class HeartBeatsClient {
 
             future.sync();
         } catch (Throwable t) {
+//            todo
+            timer.newTimeout(watchdog, 2, TimeUnit.SECONDS);
             throw new Exception("connect to fail", t);
         }
 
