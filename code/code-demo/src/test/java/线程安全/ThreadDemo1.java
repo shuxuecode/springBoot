@@ -7,7 +7,6 @@ public class ThreadDemo1 {
 
         while (true) {
 
-
         }
     }
 
