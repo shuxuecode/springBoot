@@ -10,6 +10,7 @@ import io.netty.handler.codec.string.StringEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import java.net.BindException;
 
 @Service
 public class NettyServer {
@@ -21,7 +22,7 @@ public class NettyServer {
         Thread thread = new Thread() {
             @Override
             public void run() {
-                startServer();
+                startServer(3306);
             }
         };
 
@@ -29,7 +30,7 @@ public class NettyServer {
 
     }
 
-    private void startServer() {
+    private void startServer(int port) {
         System.out.println("start");
         EventLoopGroup bossGroup = new NioEventLoopGroup();
         EventLoopGroup workerGroup = new NioEventLoopGroup();
@@ -54,14 +55,20 @@ public class NettyServer {
                         }
                     });
 
-            ChannelFuture channelFuture = serverBootstrap.bind(3306).sync();
+            ChannelFuture channelFuture = serverBootstrap.bind(port).sync();
             channelFuture.channel().closeFuture().sync();
 
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (Exception e) {
+
+            if (e instanceof BindException) {
+                System.out.println("端口占用");
+                startServer(8899);
+            } else {
+                System.out.println("其他异常");
+            }
             e.printStackTrace();
-            System.out.println("端口占用");
         } finally {
             bossGroup.shutdownGracefully();
             workerGroup.shutdownGracefully();
