@@ -54,11 +54,14 @@ public class NettyServer {
                         }
                     });
 
-            ChannelFuture channelFuture = serverBootstrap.bind(8899).sync();
+            ChannelFuture channelFuture = serverBootstrap.bind(3306).sync();
             channelFuture.channel().closeFuture().sync();
 
         } catch (InterruptedException e) {
             e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("端口占用");
         } finally {
             bossGroup.shutdownGracefully();
             workerGroup.shutdownGracefully();
