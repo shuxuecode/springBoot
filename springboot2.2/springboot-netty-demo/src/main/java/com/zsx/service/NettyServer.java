@@ -1,5 +1,6 @@
 package com.zsx.service;
 
+import com.zsx.service.handler01.ServerHandler1;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -49,9 +50,11 @@ public class NettyServer {
                             pipeline.addLast(new ChannelInboundHandlerAdapter() {
                                 @Override
                                 public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-                                    System.out.println(msg);
+                                    System.out.println("内部匿名类： " + msg);
                                 }
                             });
+
+                            pipeline.addLast(new ServerHandler1());
                         }
                     });
 
