@@ -47,6 +47,8 @@ public class NettyServer {
                             pipeline.addLast("decoder", new StringDecoder());
                             pipeline.addLast("encoder", new StringEncoder());
 
+                            pipeline.addLast(new ServerHandler1());
+
                             pipeline.addLast(new ChannelInboundHandlerAdapter() {
                                 @Override
                                 public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
@@ -54,7 +56,6 @@ public class NettyServer {
                                 }
                             });
 
-                            pipeline.addLast(new ServerHandler1());
                         }
                     });
 
