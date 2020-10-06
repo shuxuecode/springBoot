@@ -47,15 +47,22 @@ public class NettyServer {
                             pipeline.addLast("decoder", new StringDecoder());
                             pipeline.addLast("encoder", new StringEncoder());
 
-                            pipeline.addLast(new ServerHandler1());
 
                             pipeline.addLast(new ChannelInboundHandlerAdapter() {
                                 @Override
                                 public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
                                     System.out.println("内部匿名类： " + msg);
+
+                                    /*
+                                    fireChannelRead表示传递消息至下一个处理器，因为pipline的原因，我们可能有一个链式的处理队列，这个队列有头和尾之分，那么消息通常从头处理器进入。
+
+假设现有队列A、B、C，一条消息消息首先进入A，如果A不显示调用fireChannelRead将消息传递至B的话，那么B和C永远收不到消息。
+                                     */
+                                    ctx.fireChannelRead(msg);
                                 }
                             });
 
+                            pipeline.addLast(new ServerHandler1());
                         }
                     });
 
