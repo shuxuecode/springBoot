@@ -14,37 +14,67 @@ public class Num21 {
 
         listNode2_1.next = listNode2_2;
 
-        new Num21().mergeTwoLists(listNode1_1, listNode2_1);
+//        ListNode listNode = new Num21().mergeTwoLists(listNode1_1, listNode2_1);
+        ListNode listNode = new Num21().mergeTwoLists2(listNode1_1, listNode2_1);
+        while (listNode != null) {
+            System.out.println(listNode.val);
+            listNode = listNode.next;
+        }
     }
 
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
-        ListNode listNode;
-        int a, b;
+        ListNode listNode = new ListNode(0);
 
-        while (l1.next != null && l2.next != null) {
+        ListNode tempNode = listNode;
 
-            a = l1.val;
-            b = l2.val;
-
-            if (a < b) {
-                ListNode listNode1 = new ListNode(a);
-                int next = l1.next.val;
-
-
+        while (l1 != null && l2 != null) {
+            if (l1.val < l2.val) {
+                tempNode.next = l1;
+                tempNode = l1;
+                l1 = l1.next;
             } else {
-                ListNode listNode2 = new ListNode(b);
+                tempNode.next = l2;
+                tempNode = l2;
+                l2 = l2.next;
             }
-
-
         }
 
+        if (l1 != null) {
+            tempNode.next = l1;
+        }
 
-        return null;
-    }
+        if (l2 != null) {
+            tempNode.next = l2;
+        }
 
-    ListNode getNext(ListNode listNode) {
         return listNode.next;
     }
+
+
+    public ListNode mergeTwoLists2(ListNode l1, ListNode l2) {
+        if (l1 == null) {
+            return l2;
+        }
+        if (l2 == null) {
+            return l1;
+        }
+
+        ListNode rootNode = new ListNode(0);
+        ListNode curNode = rootNode;
+        while (l1 != null && l2 != null) {
+            boolean bool = l1.val < l2.val;
+
+            curNode.next = bool ? l1 : l2;
+            curNode = curNode.next;
+            l1 = bool ? l1.next : l1;
+            l2 = bool ? l2 : l2.next;
+        }
+
+        curNode.next = l1 == null ? l2 : l1;
+
+        return rootNode.next;
+    }
+
 
 }
 
