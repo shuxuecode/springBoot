@@ -12,6 +12,9 @@ public class ThreadLocalTest {
 
     public static void main(String[] args) {
 
+        Map<String, String> threadLocal = ThreadLocalUtil.getThreadLocal();
+        System.out.println(threadLocal);
+
         try {
             ThreadLocalTest threadLocalTest = new ThreadLocalTest();
             threadLocalTest.init("test");
