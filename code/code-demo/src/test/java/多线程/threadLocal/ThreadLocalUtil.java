@@ -7,6 +7,9 @@ public class ThreadLocalUtil {
     private static final ThreadLocal<Map<String, String>> THREAD_LOCAL = new ThreadLocal<>();
 
     public static void setThreadLocal(Map<String, String> map) {
+
+
+
         THREAD_LOCAL.set(map);
     }
 

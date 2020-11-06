@@ -21,6 +21,7 @@ public class ThreadLocalTest {
             threadLocalTest.name("name");
             threadLocalTest.person("person");
 
+
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -61,16 +62,25 @@ public class ThreadLocalTest {
 
             final String num = String.valueOf(i);
 
+
             CompletableFuture.runAsync(() -> {
                 try {
                     threadLocalTest.tt2(num);
+                    System.out.println("-----");
                 } catch (Exception e) {
                     e.printStackTrace();
                 } finally {
                     System.out.println(num);
-                    Map<String, String> map = ThreadLocalUtil.getThreadLocal();
-                    System.out.println(JSON.toJSONString(map));
-                    ThreadLocalUtil.clearThreadLocal();
+
+//                    Map<String, String> map = ThreadLocalUtil.getThreadLocal();
+//                    System.out.println(JSON.toJSONString(map));
+//                    ThreadLocalUtil.clearThreadLocal();
+
+                    CompletableFuture.runAsync(()->{
+                        Map<String, String> map = ThreadLocalUtil.getThreadLocal();
+                        System.out.println(JSON.toJSONString(map));
+                        ThreadLocalUtil.clearThreadLocal();
+                    });
                 }
             });
 
