@@ -5,6 +5,8 @@ import org.joda.time.Period;
 import org.joda.time.PeriodType;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
+import org.junit.Assert;
+import org.junit.jupiter.api.Test;
 
 /**
  * Created by ZSX on 2018/12/13.
@@ -12,6 +14,18 @@ import org.joda.time.format.DateTimeFormatter;
  * @author ZSX
  */
 public class JodaTimeDemo {
+
+    @Test
+    void t1() {
+        int num = 1 + 1;
+        System.out.println(1);
+        Assert.assertEquals(num, 2);
+        System.out.println(2);
+
+        Assert.assertEquals(num, 3);
+        System.out.println(3);
+
+    }
 
 
     public static void main(String[] args) {
