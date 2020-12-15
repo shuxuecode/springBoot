@@ -32,7 +32,18 @@
 
 
 
+
+
 ## springboot 1.x 系列
+
+### springboot example
+
+- [集成email](example/springboot-mail/README.md)
+
+- [集成postgresql](example/springboot-postgresql/README.md)
+
+
+
 
 > 很早之前做的一些教程，当时还是1.x版本，所以罗列在下面
 
