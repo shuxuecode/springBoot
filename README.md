@@ -38,12 +38,19 @@
 
 ### springboot example
 
+
+- [多数据源配置](example/springboot-multiDataSources/README.md)
+
+- [使用redis作为缓存](example/springboot-redis-cache/README.md)
+
+- [redis作为mq](example/springboot-redis-mq/README.md)
+
 - [集成email](example/springboot-mail/README.md)
 
 - [集成postgresql](example/springboot-postgresql/README.md)
 
 
-
+---
 
 > 很早之前做的一些教程，当时还是1.x版本，所以罗列在下面
 
