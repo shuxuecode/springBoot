@@ -36,7 +36,7 @@
 
 ## springboot 1.x 系列
 
-### springboot example
+### example
 
 
 - [多数据源配置](example/springboot-multiDataSources/README.md)
