@@ -16,3 +16,57 @@ Undertow 是红帽公司开发的一款基于 NIO 的高性能 Web 嵌入式服�
 
 - 
 嵌套性：它不需要容器，只需通过 API 即可快速搭建 Web 服务器
+
+
+---
+
+## 因为springboot默认的嵌入式容器是Tomcat，所以需要修改为undertow
+
+```
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-web</artifactId>
+    <exclusions>
+        <!-- Exclude the Tomcat dependency -->
+        <exclusion>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+        </exclusion>
+    </exclusions>
+</dependency>
+
+<!-- Use Undertow instead -->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-undertow</artifactId>
+</dependency>
+```
+
+
+
+
+
+## 打成jar包后怎么运行
+
+- 1
+
+```
+nohup java -jar test.jar >temp.txt &
+```
+
+> 这种方法会把日志文件输入到你指定的文件中，没有则会自动创建。进程会在后台运行。
+
+- 2
+
+```
+nohup command > command.log 2>&1& echo $! > command.pid
+```
+
+> 获取pid
+
+
+```
+# 停止命令
+
+kill `cat command.pid`
+```
