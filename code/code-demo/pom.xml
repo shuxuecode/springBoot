@@ -326,6 +326,23 @@
         </dependency>
         <!-- Jackson Java 8 新功能 end -->
 
+        <!-- undertow start -->
+        <dependency>
+            <groupId>io.undertow</groupId>
+            <artifactId>undertow-core</artifactId>
+            <version>2.2.2.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>io.undertow</groupId>
+            <artifactId>undertow-servlet</artifactId>
+            <version>2.2.2.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>io.undertow</groupId>
+            <artifactId>undertow-websockets-jsr</artifactId>
+            <version>2.2.2.Final</version>
+        </dependency>
+        <!-- undertow end -->
 
     </dependencies>
 
