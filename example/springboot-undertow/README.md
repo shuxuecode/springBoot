@@ -71,6 +71,14 @@ nohup command > command.log 2>&1& echo $! > command.pid
 kill `cat command.pid`
 ```
 
+- 3
+
+```
+nohup java -jar -Xms128M -Xmx1024M -server.port=9002 XX.jar > XX.out 2>&1 &
+```
+-Xms128M -Xmx1024M：指定内存，Xms一般为最大内存的1/64,Xmx一般为最大内存的1/4
+-server.port=9002：指定端口
+
 
 
 ---
