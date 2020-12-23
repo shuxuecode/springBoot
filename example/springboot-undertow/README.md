@@ -76,7 +76,7 @@ kill `cat command.pid`
 ```
 nohup java -jar -Xms128M -Xmx1024M -server.port=9002 XX.jar > XX.out 2>&1 &
 ```
--Xms128M -Xmx1024M：指定内存，Xms一般为最大内存的1/64,Xmx一般为最大内存的1/4
+-Xms128M -Xmx1024M：指定内存，Xms一般为最大内存的1/64,Xmx(程序运行期间最大可占用的内存大小)一般为最大内存的1/4
 -server.port=9002：指定端口
 
 
