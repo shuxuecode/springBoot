@@ -1,12 +1,14 @@
 package java8Stream;
 
 import com.google.common.collect.Lists;
+import jdk.management.resource.internal.inst.SocketOutputStreamRMHooks;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.IntStream;
 import java.util.stream.LongStream;
+import java.util.stream.Stream;
 
 /**
  * @author zhaoshuxue3
@@ -17,6 +19,32 @@ public class ListStreamTest {
     public static void main(String[] args) throws Exception {
 //        test1();
 
+    }
+
+
+    @Test
+    public void t1() {
+        ArrayList<Integer> list = Lists.newArrayList(1, 2, 3, 4, 5, 6, 7, 8, 9);
+        // 并行流
+        list.parallelStream().forEach(item -> {
+            System.out.println(item);
+        });
+
+        System.out.println();
+        System.out.println();
+
+        // 将普通流变成并行流
+        list.stream().parallel().forEach(item -> {
+            System.out.println(item);
+        });
+
+        System.out.println();
+        System.out.println();
+        
+        // 将并行流转换为顺序流
+        list.stream().sequential().forEach(item -> {
+            System.out.println(item);
+        });
     }
 
 
@@ -95,7 +123,6 @@ public class ListStreamTest {
                 .build();
 
         longStream.forEach(item -> System.out.println(item));
-
 
 
     }
