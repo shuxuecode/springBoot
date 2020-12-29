@@ -30,7 +30,7 @@ public class NettyServer {
         thread.start();
 
 
-        
+
     }
 
     private void startServer(int port) {
