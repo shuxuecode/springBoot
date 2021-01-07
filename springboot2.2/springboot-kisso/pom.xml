@@ -11,7 +11,7 @@
     <groupId>com.zsx</groupId>
     <artifactId>springboot-kisso</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <name>springboot-kisso</name>
     <description>Demo project for Spring Boot</description>
 
@@ -93,7 +93,7 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>1.2.68</version>
+            <version>1.2.75</version>
         </dependency>
 
         <dependency>
@@ -102,10 +102,10 @@
             <version>5.3.1</version>
         </dependency>
 
-
     </dependencies>
 
     <build>
+        <finalName>sso</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
