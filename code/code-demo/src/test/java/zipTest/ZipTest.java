@@ -6,6 +6,7 @@ import org.joda.time.DateTime;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
@@ -24,29 +25,48 @@ public class ZipTest {
 //        test();
 //        test2();
 
-        String rootPath = "D:/2/";
-        File file = new File(rootPath);
-        if (file.isDirectory()) {
-            File[] files = file.listFiles();
-            System.out.println(JSON.toJSONString(files));
-            String[] list = file.list();
-            System.out.println(JSON.toJSONString(list));
-            for (File file1 : files) {
-                System.out.println(file1.getName());
-            }
+        zip("D:/2/", "D:/2/", "test.zip");
+    }
+
+    public static List<String> getFileList(String sourceFilePath) {
+        ArrayList<String> fileNameList = Lists.newArrayList();
+
+//        String sourceFilePath = "D:/2/";
+        File sourceFile = new File(sourceFilePath);
+
+        if (!sourceFile.exists()) {
+            System.out.println("目录不存在");
+            return fileNameList;
         }
 
-        String yyyyMMddHHmm = DateTime.now().toString("-yyyy-MM-dd-HH-mm");
-        System.out.println(yyyyMMddHHmm);
+        File[] files = sourceFile.listFiles();
+        if (files == null || files.length == 0) {
+            System.out.println("目录下没有任何文件");
+            return fileNameList;
+        }
 
-        File file1 = new File(rootPath, "22.txt");
-        System.out.println(file1.exists());
+        for (File file : files) {
+            System.out.println(file.getName());
+            getFile(file, "", fileNameList);
+        }
 
-
-        File file2 = new File(rootPath + "33.txt");
-        System.out.println(file2.exists());
-
+        System.out.println(JSON.toJSONString(fileNameList, true));
+        return fileNameList;
     }
+
+    public static void getFile(File file, String path, List<String> fileNameList) {
+        String fileName = file.getName();
+        if (file.isDirectory()) {
+//            fileName;
+            File[] files = file.listFiles();
+            for (File subFile : files) {
+                getFile(subFile, path + fileName + "/", fileNameList);
+            }
+        } else {
+            fileNameList.add(path + fileName);
+        }
+    }
+
 
     public static void test() throws IOException {
 
@@ -84,9 +104,9 @@ public class ZipTest {
     public static void test2() throws IOException {
         String rootPath = "D:/2/";
         // 目标
-        ArrayList<String> files = Lists.newArrayList("1.txt", "2.txt", "3.txt");
+        ArrayList<String> files = Lists.newArrayList("1/1.txt", "2.txt", "3.txt");
         // 结果文件
-        String zipFile = rootPath + "anjian.zip";
+        String zipFile = rootPath + "test.zip";
 
         ZipOutputStream zipOutputStream = new ZipOutputStream(new FileOutputStream(new File(zipFile)));
         BufferedInputStream bis = null;
@@ -113,4 +133,39 @@ public class ZipTest {
     }
 
 
+    public static void zip(String rootPath, String zipPath, String zipFileName) throws IOException {
+
+        List<String> fileList = getFileList(rootPath);
+        if (fileList == null || fileList.size() == 0) {
+            return;
+        }
+
+        // 结果文件
+        String zipFile = zipPath + zipFileName;
+
+        ZipOutputStream zipOutputStream = new ZipOutputStream(new FileOutputStream(new File(zipFile)));
+        BufferedInputStream bis = null;
+        for (String file : fileList) {
+            ZipEntry zipEntry = new ZipEntry(file);
+            zipOutputStream.putNextEntry(zipEntry);
+
+            bis = new BufferedInputStream(new FileInputStream(new File(rootPath + file)));
+
+            int count = 0;
+            byte[] bytes = new byte[BUFFER];
+            while ((count = bis.read(bytes, 0, BUFFER)) != -1) {
+                zipOutputStream.write(bytes, 0, count);
+            }
+        }
+
+        bis.close();
+        zipOutputStream.closeEntry();
+
+        // 冲刷输出流
+        zipOutputStream.flush();
+        // 关闭输出流
+        zipOutputStream.close();
+
+        System.out.println("压缩完成");
+    }
 }
