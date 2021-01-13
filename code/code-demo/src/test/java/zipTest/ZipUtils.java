@@ -16,6 +16,9 @@ public class ZipUtils {
 
     private static final Logger log = LoggerFactory.getLogger(ZipUtils.class);
 
+    public static void main(String[] args) {
+    }
+
     /**
      * 将存放在sourceFilePath目录下的源文件，打包成fileName名称的zip文件，并存放到zipFilePath路径下
      *
@@ -64,7 +67,7 @@ public class ZipUtils {
                             log.error(e.getMessage());
                         } finally {
                             if (null != zos) {
-                                zos.close();
+//                                zos.close();
                             }
                         }
                         byte[] bufs = new byte[1024 * 10];
