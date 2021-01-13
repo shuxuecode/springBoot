@@ -6,7 +6,6 @@ import org.joda.time.DateTime;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.logging.Logger;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
