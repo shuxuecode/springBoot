@@ -26,6 +26,6 @@ public class MyApplicationRunner implements ApplicationRunner {
         }
 
         Slf4jReporter reporter = Slf4jReporter.forRegistry(metricRegistry).build();
-        reporter.start(10, TimeUnit.SECONDS);
+        reporter.start(5, TimeUnit.MINUTES);
     }
 }
