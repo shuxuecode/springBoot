@@ -102,6 +102,18 @@
             <version>5.3.1</version>
         </dependency>
 
+        <dependency>
+            <groupId>io.dropwizard.metrics</groupId>
+            <artifactId>metrics-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.dropwizard.metrics</groupId>
+            <artifactId>metrics-healthchecks</artifactId>
+<!--            <version>4.1.17</version>-->
+        </dependency>
+
+
     </dependencies>
 
     <build>

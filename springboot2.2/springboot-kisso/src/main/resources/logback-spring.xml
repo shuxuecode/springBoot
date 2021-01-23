@@ -24,9 +24,16 @@
         </layout>
     </appender>
 
+    <appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
     <!--    <logger name="com" level="info"/>-->
 
     <root level="INFO">
         <appender-ref ref="fileAppender"/>
+        <appender-ref ref="consoleAppender"/>
     </root>
 </configuration>
