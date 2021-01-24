@@ -13,6 +13,8 @@ import com.baomidou.kisso.security.token.SSOToken;
 import com.zsx.springbootkisso.entity.Tuser;
 import com.zsx.springbootkisso.service.UserService;
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -28,6 +30,8 @@ import java.util.Map;
 
 @Controller
 public class LoginController {
+
+    private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 
     @Autowired
     protected HttpServletRequest request;
@@ -52,52 +56,59 @@ public class LoginController {
             @RequestParam(value = "password") String password,
             @RequestParam(value = "token") String token
     ) {
+        logger.info("login请求开始");
+        long start = System.currentTimeMillis();
         JSONObject json = new JSONObject();
         json.put("success", false);
         json.put("code", 300);
+        try {
 //        Map<String, String[]> parameterMap = request.getParameterMap();
 //        for (Map.Entry<String, String[]> entry : parameterMap.entrySet()) {
 //            System.out.println("key : " + entry.getKey());
 //            System.out.println("value : " + entry.getValue());
 //        }
 
+            if (StringUtils.isBlank(username)) {
+                json.put("message", "用户名不能为空");
+                return json;
+            }
+            if (StringUtils.isBlank(password)) {
+                json.put("message", "密码不能为空");
+                return json;
+            }
 
-        if (StringUtils.isBlank(username)) {
-            json.put("message", "用户名不能为空");
-            return json;
-        }
-        if (StringUtils.isBlank(password)) {
-            json.put("message", "密码不能为空");
-            return json;
-        }
+            Tuser user = userService.getUser(username.trim());
+            if (user == null) {
+                json.put("message", "账号不存在");
+                return json;
+            }
 
-        Tuser user = userService.getUser(username.trim());
-        if (user == null) {
-            json.put("message", "账号不存在");
-            return json;
-        }
+            if (!password.equals(user.getPassword())) {
+                json.put("message", "密码错误");
+                return json;
+            }
 
-        if (!password.equals(user.getPassword())) {
-            json.put("message", "密码错误");
-            return json;
-        }
-
-        String returnURL = request.getParameter("ReturnURL");
-        String userId = user.getId().toString();
-        // 设置登录 COOKIE
-        SSOToken ssoToken = SSOToken.create().setIp(request)
-                .setId(userId)
-                .setIssuer(username);
+            String returnURL = request.getParameter("ReturnURL");
+            String userId = user.getId().toString();
+            // 设置登录 COOKIE
+            SSOToken ssoToken = SSOToken.create().setIp(request)
+                    .setId(userId)
+                    .setIssuer(username);
 //        SSOHelper.setCookie(request, response, ssoToken, false);
 
-        request.setAttribute(SSOConstants.SSO_COOKIE_MAXAGE, -1);
+            request.setAttribute(SSOConstants.SSO_COOKIE_MAXAGE, -1);
 
-        SSOHelper.setCookie(request, response, ssoToken, true);
+            SSOHelper.setCookie(request, response, ssoToken, true);
 
-        json.put("success", true);
-        json.put("code", 200);
-        json.put("message", "成功登录");
-        json.put("returnURL", returnURL);
+            json.put("success", true);
+            json.put("code", 200);
+            json.put("message", "成功登录");
+            json.put("returnURL", returnURL);
+        } finally {
+            long end = System.currentTimeMillis();
+            logger.info("login请求返回：{}", ((end - start) / 1000));
+            logger.info("login请求返回：{}", ((end - start)));
+        }
         return json;
     }
 
@@ -121,7 +132,6 @@ public class LoginController {
             msg += "， id=" + ssoToken.getId();
             msg += "， issuer=" + ssoToken.getIssuer();
         }
-
 
 
         return msg;
