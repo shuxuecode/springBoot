@@ -1,14 +1,12 @@
-package java8Stream;
+package javaCore.java8Stream;
 
 import com.google.common.collect.Lists;
-import jdk.management.resource.internal.inst.SocketOutputStreamRMHooks;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.IntStream;
 import java.util.stream.LongStream;
-import java.util.stream.Stream;
 
 /**
  * @author zhaoshuxue3
