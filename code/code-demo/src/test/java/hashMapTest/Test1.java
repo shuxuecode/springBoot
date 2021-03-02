@@ -49,4 +49,24 @@ public class Test1 {
 
 
     }
+
+    @Test
+    public void tttttt(){
+        int a = disturbHashIdx("test", 128);
+        int b = hashIdx("test", 128);
+
+        System.out.println(a);
+        System.out.println(b);
+    }
+
+
+    // 扰动函数
+    public static int disturbHashIdx(String key, int size) {
+        return (size - 1) & (key.hashCode() ^ (key.hashCode() >>> 16));
+    }
+
+    //  非扰动函数
+    public static int hashIdx(String key, int size) {
+        return (size - 1) & key.hashCode();
+    }
 }
