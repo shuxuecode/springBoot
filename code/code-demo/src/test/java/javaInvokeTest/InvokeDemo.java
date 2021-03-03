@@ -49,6 +49,7 @@ public class InvokeDemo {
             e.printStackTrace();
         }
 
+
         // 2
         Object newInstance = null;
         try {
