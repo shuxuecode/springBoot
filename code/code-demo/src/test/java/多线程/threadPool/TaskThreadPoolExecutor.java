@@ -3,8 +3,14 @@ package 多线程.threadPool;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
+/**
+ * 自定义线程池
+ */
 public class TaskThreadPoolExecutor extends ThreadPoolExecutor {
 
+    /**
+     * 用于记录当前线程池中已提交的任务数量
+     */
     private final AtomicInteger submittedTaskCount = new AtomicInteger(0);
 
     public TaskThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime, TimeUnit unit, BlockingQueue<Runnable> workQueue) {
@@ -19,9 +25,16 @@ public class TaskThreadPoolExecutor extends ThreadPoolExecutor {
         return submittedTaskCount.get();
     }
 
+    // 任务执行前
+    @Override
+    protected void beforeExecute(Thread t, Runnable r) {
+        super.beforeExecute(t, r);
+    }
+
     // 任务执行后
     @Override
     protected void afterExecute(Runnable r, Throwable t) {
+        // 任务执行完后需要将线程池中已提交的任务数减1
         submittedTaskCount.decrementAndGet();
     }
 
@@ -31,12 +44,13 @@ public class TaskThreadPoolExecutor extends ThreadPoolExecutor {
             throw new NullPointerException();
         }
 
+        // 已提交的任务数加1
         submittedTaskCount.incrementAndGet();
 
         try {
             super.execute(command);
         } catch (RejectedExecutionException ree) {
-
+            // 被拒绝后重试将任务添加到队列中
             final TaskQueue queue = (TaskQueue) super.getQueue();
             try {
                 if (!queue.retryOffer(command, 0, TimeUnit.MILLISECONDS)) {
@@ -52,13 +66,6 @@ public class TaskThreadPoolExecutor extends ThreadPoolExecutor {
             submittedTaskCount.decrementAndGet();
             throw t;
         }
-    }
-
-
-    // 任务执行前
-    @Override
-    protected void beforeExecute(Thread t, Runnable r) {
-        super.beforeExecute(t, r);
     }
 
 
