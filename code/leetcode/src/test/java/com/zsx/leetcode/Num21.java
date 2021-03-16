@@ -14,8 +14,8 @@ public class Num21 {
 
         listNode2_1.next = listNode2_2;
 
-//        ListNode listNode = new Num21().mergeTwoLists(listNode1_1, listNode2_1);
-        ListNode listNode = new Num21().mergeTwoLists2(listNode1_1, listNode2_1);
+        ListNode listNode = new Num21().mergeTwoLists(listNode1_1, listNode2_1);
+//        ListNode listNode = new Num21().mergeTwoLists2(listNode1_1, listNode2_1);
         while (listNode != null) {
             System.out.println(listNode.val);
             listNode = listNode.next;
