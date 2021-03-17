@@ -1,4 +1,4 @@
-package Demo.mq;//package com.qdingnet.pcloud.mq;
+package Demo.mq;
 //
 //import com.alibaba.fastjson.JSON;
 //import com.alibaba.fastjson.JSONObject;
