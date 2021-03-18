@@ -1,6 +1,7 @@
 package Sort;
 
 import java.util.Random;
+import java.util.concurrent.locks.ReentrantLock;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -37,7 +38,8 @@ public class SortTest {
 		System.out.print("排序前：");
 		System.out.println(printArray(arr));
 		System.out.println();
-		
+
+
 		for(int i=0; i<arr.length - 1; i++){
 			
 			for(int j=0; j<arr.length - 1 - i; j++){
@@ -55,6 +57,7 @@ public class SortTest {
 		
 		System.out.print("排序后：");
 		System.out.println(printArray(arr));
+
 	}
 	
 	
