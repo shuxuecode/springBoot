@@ -64,13 +64,15 @@ public class CaffeineDemo {
                 .buildAsync(new CacheLoader<String, Object>() {
                     @Override
                     public @Nullable Object load(@NonNull String key) throws Exception {
-                        return "null";
+                        System.out.println("key = " + key);
+                        return key + "null";
                     }
                 });
 
         Object value = null;
         try {
             value = cache.get("a").get(1, TimeUnit.MINUTES);
+            value = cache.get("b").get(1, TimeUnit.MINUTES);
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
@@ -78,6 +80,8 @@ public class CaffeineDemo {
         } catch (TimeoutException e) {
             e.printStackTrace();
         }
+
+
 
         System.out.println(value);
 
