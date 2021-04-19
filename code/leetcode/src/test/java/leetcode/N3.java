@@ -33,7 +33,9 @@ public class N3 {
     }
 
     public int lengthOfLongestSubstring2(String s) {
-        int n = s.length(), ans = 0;
+        int n = s.length();
+        // 答案
+        int result = 0;
         Map<Character, Integer> map = new HashMap<>(); // current index of character
         // try to extend the range [i, j]
         for (int j = 0, i = 0; j < n; j++) {
@@ -41,12 +43,14 @@ public class N3 {
             if (map.containsKey(s.charAt(j))) {
                 // 如果出现重复的，则重置i游标
                 i = Math.max(map.get(s.charAt(j)), i);
+                System.out.println("包含, 重置i游标 i= " + i);
             }
             System.out.println(i);
-            ans = Math.max(ans, j - i + 1);
+            // 比较当前字符长度 跟 最大长度
+            result = Math.max(result, j - i + 1);
             map.put(s.charAt(j), j + 1);
         }
-        return ans;
+        return result;
     }
 
 

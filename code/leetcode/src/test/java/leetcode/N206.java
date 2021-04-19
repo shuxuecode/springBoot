@@ -16,9 +16,10 @@ public class N206 {
         node2.next = node3;
         node3.next = node4;
 
-        System.out.println();
+        System.out.println("开始反转");
 
-        ListNode listNode = reverseList(node1);
+//        ListNode listNode = reverseList(node1);
+        ListNode listNode = reverseList2(node1);
 
         while (listNode != null) {
             System.out.println(listNode.val);
@@ -34,6 +35,21 @@ public class N206 {
         head.next.next = head;
         head.next = null;
         return newHead;
+    }
+
+    public ListNode reverseList2(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        ListNode pre = null;
+        ListNode next = null;
+        while (head != null) {
+            next = head.next;
+            head.next = pre;
+            pre = head;
+            head = next;
+        }
+        return pre;
     }
 }
 
