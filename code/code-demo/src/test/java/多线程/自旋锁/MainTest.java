@@ -1,11 +1,9 @@
 package 多线程.自旋锁;
 
-import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 import redis.clients.jedis.Jedis;
 import 单元测试.redisDemo.RedisClient;
 
-import javax.sound.midi.Soundbank;
 import java.util.Map;
 import java.util.Random;
 import java.util.UUID;
@@ -145,6 +143,37 @@ public class MainTest {
         }
 
         ConcurrentMap<String, Integer> dataMap = LockTest4.dataMap;
+        for (Map.Entry<String, Integer> entry : dataMap.entrySet()) {
+            System.out.println(entry.getKey() + " 次数： " + entry.getValue());
+        }
+
+
+    }
+
+
+    @Test
+    public void main6() {
+        ExecutorService executorService = Executors.newFixedThreadPool(4);
+
+        for (int i = 0; i < 100; i++) {
+            int num = i;
+            CompletableFuture.runAsync(() -> {
+                try {
+                    TimeUnit.MILLISECONDS.sleep(Long.parseLong(String.valueOf(random.nextInt(1000))));
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                new LockTest5().demo("aaa-" + num);
+            }, executorService);
+        }
+
+        try {
+            Thread.sleep(20 * 1000L);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        ConcurrentMap<String, Integer> dataMap = LockTest5.dataMap;
         for (Map.Entry<String, Integer> entry : dataMap.entrySet()) {
             System.out.println(entry.getKey() + " 次数： " + entry.getValue());
         }

@@ -1,13 +1,23 @@
 package 多线程.自旋锁;
 
+import com.google.common.collect.Lists;
 import org.joda.time.DateTime;
 import org.junit.Test;
+import redis.clients.jedis.Jedis;
+import 单元测试.redisDemo.RedisClient;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 
 public class LockTest {
 
+    @Test
+    public void luaTest() {
+        Jedis jedis = RedisClient.getClient();
+//        Object eval = jedis.eval("local ok = redis.call('get', 'zhao') \n return ok" );
+        Object eval = jedis.eval("local ok = redis.call('get', KEYS[1]) \n return ok", Lists.newArrayList("zhao"), Lists.newArrayList());
+        System.out.println(eval);
+    }
 
     private static Integer count = 0;
 
