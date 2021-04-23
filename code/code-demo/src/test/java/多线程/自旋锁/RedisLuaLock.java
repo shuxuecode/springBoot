@@ -60,7 +60,6 @@ public class RedisLuaLock {
 
         Object eval = jedis.eval(unLockScript, Lists.newArrayList(key), Lists.newArrayList(value));
         if (one.equals(eval)) {
-            logger.info("  redis获取分布式锁 " + value + " 得到锁");
             return true;
         }
 

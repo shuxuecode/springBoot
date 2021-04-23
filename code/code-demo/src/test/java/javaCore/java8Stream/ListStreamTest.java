@@ -3,7 +3,7 @@ package javaCore.java8Stream;
 import com.google.common.collect.Lists;
 import org.junit.Test;
 
-import java.util.ArrayList;
+import java.util.*;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.IntStream;
 import java.util.stream.LongStream;
@@ -38,7 +38,7 @@ public class ListStreamTest {
 
         System.out.println();
         System.out.println();
-        
+
         // 将并行流转换为顺序流
         list.stream().sequential().forEach(item -> {
             System.out.println(item);
@@ -124,5 +124,28 @@ public class ListStreamTest {
 
 
     }
+
+    @Test
+    public void test5() {
+        HashMap<String, String> map = new HashMap<>();
+        map.put("a", "a");
+        map.put("b", "b");
+        map.put("c", "c");
+
+        List<String> list = new ArrayList<>(map.keySet());
+        List<String> list2 = new ArrayList<>();
+
+        // 过滤
+        list.stream().filter(item -> item.equals("a")).forEach(list2::add);
+
+        System.out.println(list2);
+
+
+        // TODO zsx 
+        Set<String> strings = Optional.of(map).map(HashMap::keySet).orElse(null);
+
+        System.out.println(strings);
+    }
+
 
 }
