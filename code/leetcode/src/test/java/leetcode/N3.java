@@ -36,19 +36,19 @@ public class N3 {
         int n = s.length();
         // 答案
         int result = 0;
+        int left = 0; // 滑动窗口左指针
         Map<Character, Integer> map = new HashMap<>(); // current index of character
-        // try to extend the range [i, j]
-        for (int j = 0, i = 0; j < n; j++) {
+
+        for (int i = 0; i < n; i++) {
             System.out.println(map);
-            if (map.containsKey(s.charAt(j))) {
-                // 如果出现重复的，则重置i游标
-                i = Math.max(map.get(s.charAt(j)), i);
-                System.out.println("包含, 重置i游标 i= " + i);
+            if (map.containsKey(s.charAt(i))) {
+                // 如果出现重复的，则更新左指针
+                left = Math.max(map.get(s.charAt(i)) + 1, left);
             }
-            System.out.println(i);
+            // 不管是否更新left，都要更新 s.charAt(i) 的位置！
+            map.put(s.charAt(i), i);
             // 比较当前字符长度 跟 最大长度
-            result = Math.max(result, j - i + 1);
-            map.put(s.charAt(j), j + 1);
+            result = Math.max(result, i - left + 1);
         }
         return result;
     }
