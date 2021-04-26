@@ -36,6 +36,12 @@ public class N23 {
         return listNode.next;
     }
 
+    /**
+     * 获取最小值
+     *
+     * @param lists
+     * @return
+     */
     public ListNode getMin(ListNode[] lists) {
         Integer min = null;
         int index = -1;
