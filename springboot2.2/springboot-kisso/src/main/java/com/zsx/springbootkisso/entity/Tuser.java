@@ -1,24 +1,47 @@
 package com.zsx.springbootkisso.entity;
 
 
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
-public class Tuser {
+@Entity
+@Table(name = "t_user")
+public class Tuser implements Serializable {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // 设置主键为自增主键
+    @Column(name = "id")
     private Integer id;
+
+    @Column(name = "username")
     private String username;
+
+    @Column(name = "password")
     private String password;
+
+    @Column(name = "gender")
     private Integer gender;
-    private Date birthday;
-    private Date lastLoginTime;
-    private String lastLoginIp;
-    private Integer userLevel;
+
+    @Column(name = "nickname")
     private String nickname;
+
+    @Column(name = "mobile")
     private String mobile;
+
+    @Column(name = "avatar")
     private String avatar;
+
+    @Column(name = "status")
     private Integer status;
+
+    @Column(name = "create_time")
     private Date createTime;
+
+    @Column(name = "update_time")
     private Date updateTime;
+
+    @Column(name = "deleted")
     private Integer deleted;
 
 
@@ -52,38 +75,6 @@ public class Tuser {
 
     public void setGender(Integer gender) {
         this.gender = gender;
-    }
-
-    public Date getBirthday() {
-        return birthday;
-    }
-
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
-    }
-
-    public Date getLastLoginTime() {
-        return lastLoginTime;
-    }
-
-    public void setLastLoginTime(Date lastLoginTime) {
-        this.lastLoginTime = lastLoginTime;
-    }
-
-    public String getLastLoginIp() {
-        return lastLoginIp;
-    }
-
-    public void setLastLoginIp(String lastLoginIp) {
-        this.lastLoginIp = lastLoginIp;
-    }
-
-    public Integer getUserLevel() {
-        return userLevel;
-    }
-
-    public void setUserLevel(Integer userLevel) {
-        this.userLevel = userLevel;
     }
 
     public String getNickname() {

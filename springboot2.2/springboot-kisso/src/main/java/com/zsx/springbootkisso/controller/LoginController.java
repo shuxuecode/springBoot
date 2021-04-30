@@ -19,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import javax.imageio.ImageIO;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -35,14 +36,13 @@ public class LoginController {
 
     @Autowired
     protected HttpServletRequest request;
-    @Autowired
+    @Resource
     protected HttpServletResponse response;
     @Autowired
     private UserService userService;
 
     @RequestMapping(value = {"/", "/index"})
     public String home() {
-//        model.addAttribute("name", UUID.randomUUID().toString());
         return "login";
     }
 
