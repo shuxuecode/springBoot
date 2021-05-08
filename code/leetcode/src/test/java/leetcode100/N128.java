@@ -1,4 +1,4 @@
-package leetcode;
+package leetcode100;
 
 import org.junit.jupiter.api.Test;
 

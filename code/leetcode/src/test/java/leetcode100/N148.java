@@ -28,10 +28,11 @@ public class N148 {
         }
 
         ListNode midNode = getMid(head);
-
+        // 将链表一切为二
         ListNode rightNode = midNode.next;
         midNode.next = null;
 
+        // 迭代二分
         ListNode left = sortList(head);
         ListNode right = sortList(rightNode);
 
@@ -55,6 +56,7 @@ public class N148 {
         return slow;
     }
 
+    // 合并两个链表
     public ListNode merge(ListNode left, ListNode right) {
         ListNode root = new ListNode(0);
         ListNode curNode = root;
@@ -70,6 +72,7 @@ public class N148 {
             curNode = curNode.next;
         }
 
+        // 注意把剩下的节点拼接上去
         if (left != null){
             curNode.next = left;
         }
