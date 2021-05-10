@@ -34,7 +34,7 @@ public class N21 {
 
         listNode2_1.next = listNode2_2;
 
-        ListNode listNode = new N21().mergeTwoLists(listNode1_1, listNode2_1);
+        ListNode listNode = mergeTwoLists(listNode1_1, listNode2_1);
 //        ListNode listNode = new Num21().mergeTwoLists2(listNode1_1, listNode2_1);
         while (listNode != null) {
             System.out.println(listNode.val);
@@ -43,6 +43,8 @@ public class N21 {
     }
 
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+
+        // 定义一个新链表
         ListNode listNode = new ListNode(0);
 
         ListNode tempNode = listNode;
@@ -50,13 +52,12 @@ public class N21 {
         while (l1 != null && l2 != null) {
             if (l1.val < l2.val) {
                 tempNode.next = l1;
-                tempNode = l1;
                 l1 = l1.next;
             } else {
                 tempNode.next = l2;
-                tempNode = l2;
                 l2 = l2.next;
             }
+            tempNode = tempNode.next;
         }
 
         if (l1 != null) {
