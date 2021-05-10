@@ -1,8 +1,28 @@
-package com.zsx.leetcode;
+package leetcode;
 
-public class Num21 {
+import org.junit.jupiter.api.Test;
 
-    public static void main(String[] args) {
+public class N21 {
+
+    class ListNode {
+        int val;
+        ListNode next;
+
+        ListNode() {
+        }
+
+        ListNode(int val) {
+            this.val = val;
+        }
+
+        ListNode(int val, ListNode next) {
+            this.val = val;
+            this.next = next;
+        }
+    }
+
+    @Test
+    public void main() {
 
         ListNode listNode1_1 = new ListNode(1);
         ListNode listNode1_2 = new ListNode(2);
@@ -14,7 +34,7 @@ public class Num21 {
 
         listNode2_1.next = listNode2_2;
 
-        ListNode listNode = new Num21().mergeTwoLists(listNode1_1, listNode2_1);
+        ListNode listNode = new N21().mergeTwoLists(listNode1_1, listNode2_1);
 //        ListNode listNode = new Num21().mergeTwoLists2(listNode1_1, listNode2_1);
         while (listNode != null) {
             System.out.println(listNode.val);
@@ -79,19 +99,3 @@ public class Num21 {
 }
 
 
-class ListNode {
-    int val;
-    ListNode next;
-
-    ListNode() {
-    }
-
-    ListNode(int val) {
-        this.val = val;
-    }
-
-    ListNode(int val, ListNode next) {
-        this.val = val;
-        this.next = next;
-    }
-}

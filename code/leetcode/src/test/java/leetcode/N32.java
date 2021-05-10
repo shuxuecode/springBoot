@@ -1,4 +1,4 @@
-package com.zsx.leetcode;
+package leetcode;
 
 import org.junit.jupiter.api.Test;
 

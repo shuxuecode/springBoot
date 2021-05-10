@@ -4,6 +4,24 @@ import org.junit.jupiter.api.Test;
 
 public class N206 {
 
+    class ListNode {
+        int val;
+        ListNode next;
+
+        ListNode() {
+        }
+
+        ListNode(int val) {
+            this.val = val;
+        }
+
+        ListNode(int val, ListNode next) {
+            this.val = val;
+            this.next = next;
+        }
+    }
+
+
     @Test
     public void test() {
 
@@ -41,32 +59,22 @@ public class N206 {
         if (head == null || head.next == null) {
             return head;
         }
+        // 定义两个节点，pre为上一个节点，next为当前节点
         ListNode pre = null;
         ListNode next = null;
         while (head != null) {
+            // 记录当前节点的下一个节点
             next = head.next;
+            // 将当前节点的下一个节点指向上一个节点，实现反转
             head.next = pre;
+            // 节点分别往前移动，以实现下一个节点的反转
             pre = head;
             head = next;
         }
         return pre;
     }
+
+
 }
 
 
-class ListNode {
-    int val;
-    ListNode next;
-
-    ListNode() {
-    }
-
-    ListNode(int val) {
-        this.val = val;
-    }
-
-    ListNode(int val, ListNode next) {
-        this.val = val;
-        this.next = next;
-    }
-}
