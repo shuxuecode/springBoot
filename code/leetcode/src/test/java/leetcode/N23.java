@@ -82,26 +82,74 @@ public class N23 {
 
         ListNode[] lists = {node13, node23, node32};
 
-//        for (ListNode list : lists) {
-//            print(list);
-//        }
-
 //        [[1],[0]]
         ListNode node41 = new ListNode(1);
         ListNode node51 = new ListNode(0);
 
         ListNode[] lists2 = {node41, node51};
 
-        ListNode listNode = mergeKLists(lists2);
+//        ListNode listNode = mergeKLists(lists);
+        ListNode listNode = mergeKLists2(lists);
 
         print(listNode);
+
+
     }
 
+
+    // 解法2
+    // 分治思想，两两合并
+    public ListNode mergeKLists2(ListNode[] lists) {
+        ListNode temp = null;
+        for (ListNode listNode : lists) {
+            temp = mergeTwoLists(temp, listNode);
+        }
+        return temp;
+    }
+
+    // 两个链表合并
+    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        if (l1 == null) {
+            return l2;
+        }
+        if (l2 == null) {
+            return l1;
+        }
+
+        ListNode root = new ListNode(-1);
+        ListNode cur = root;
+
+        while (l1 != null && l2 != null) {
+            if (l1.val < l2.val) {
+                cur.next = l1;
+                l1 = l1.next;
+            } else {
+                cur.next = l2;
+                l2 = l2.next;
+            }
+            cur = cur.next;
+        }
+
+        if (l1 != null) {
+            cur.next = l1;
+        }
+
+        if (l2 != null) {
+            cur.next = l2;
+        }
+
+        return root.next;
+    }
+
+
     public void print(ListNode listNode) {
+        System.out.println();
         while (listNode != null) {
-            System.out.println(listNode.val);
+            System.out.print(listNode.val);
+            System.out.print(" , ");
             listNode = listNode.next;
         }
+        System.out.println();
     }
 
 }
