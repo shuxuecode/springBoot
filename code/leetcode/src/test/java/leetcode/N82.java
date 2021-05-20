@@ -48,21 +48,18 @@ public class N82 {
         root.next = head;
 
         ListNode node = root;
-        int val = node.next.val;
 
-//        while (node != null && node.next != null) {
-////            ListNode node = next.next;
-//
-//            while (node.next != null && node.val == val) {
-//                node = node.next;
-//            }
-//            next.next = node;
-//            if (next.next != null) {
-//                val = next.next.val;
-//            }
-//            next = next.next;
-//        }
-        return head;
+        while (node.next != null && node.next.next != null) {
+            if (node.next.val == node.next.next.val) {
+                int val = node.next.val;
+                while (node.next != null && node.next.val == val) {
+                    node.next = node.next.next;
+                }
+            } else {
+                node = node.next;
+            }
+        }
+        return root.next;
     }
 
     @Test
