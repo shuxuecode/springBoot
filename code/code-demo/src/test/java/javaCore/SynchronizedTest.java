@@ -1,7 +1,7 @@
 package javaCore;
 
 /**
- *
+ * todo
  */
 public class SynchronizedTest {
 
