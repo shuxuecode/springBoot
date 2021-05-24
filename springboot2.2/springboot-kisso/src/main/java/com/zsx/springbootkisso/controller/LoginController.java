@@ -61,6 +61,13 @@ public class LoginController {
         JSONObject json = new JSONObject();
         json.put("success", false);
         json.put("code", 300);
+
+//        try {
+//            Thread.sleep(8000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+
         try {
 //        Map<String, String[]> parameterMap = request.getParameterMap();
 //        for (Map.Entry<String, String[]> entry : parameterMap.entrySet()) {
