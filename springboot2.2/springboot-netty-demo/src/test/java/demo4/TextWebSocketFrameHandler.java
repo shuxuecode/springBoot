@@ -4,6 +4,9 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
 
+/**
+ * TextWebSocketFrame —— netty专门处理文本的对象
+ */
 public class TextWebSocketFrameHandler extends SimpleChannelInboundHandler<TextWebSocketFrame> {
 
     @Override
@@ -15,6 +18,7 @@ public class TextWebSocketFrameHandler extends SimpleChannelInboundHandler<TextW
 
     @Override
     public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
+        // asLongText 返回一个全局唯一的字符串
         System.out.println("handlerAdded: " + ctx.channel().id().asLongText());
     }
 
