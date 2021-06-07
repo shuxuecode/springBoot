@@ -3,10 +3,46 @@ package leetcode;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * todo
+ */
 public class N40 {
+
+    List<List<Integer>> result = new ArrayList<>();
+
+    public List<List<Integer>> combinationSum(int[] candidates, int target) {
+
+        for (int i = 0; i < candidates.length; i++) {
+            dfs(candidates, i, target, 0, new ArrayList<>());
+        }
+
+        return result;
+    }
+
+    public void dfs(int[] candidates, int i, int target, int sum, List<Integer> list) {
+        if (i == candidates.length) {
+            return;
+        }
+        sum += candidates[i];
+        list.add(candidates[i]);
+
+        if (sum > target) {
+            return;
+        }
+        if (sum == target) {
+            result.add(list);
+            return;
+        }
+
+        dfs(candidates, i + 1, target, sum, list);
+    }
+
+
+    // 这个错误
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {
         List<List<Integer>> resultList = new ArrayList<>();
 
@@ -38,14 +74,11 @@ public class N40 {
         int[] nums = {2, 2, 2, 3, 3};
         int target = 5;
 
-        List<List<Integer>> lists = combinationSum2(nums, target);
+        List<List<Integer>> lists = combinationSum(nums, target);
 
         for (List<Integer> list : lists) {
-            System.out.println();
-            for (Integer integer : list) {
-                System.out.print(integer);
-                System.out.print(" , ");
-            }
+            System.out.println(list);
         }
+
     }
 }
