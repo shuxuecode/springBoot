@@ -36,6 +36,14 @@ public class BufferTest {
             System.out.println();
         }
 
+        intBuffer.flip();
+
+        for (int i = 0; i < 5; i++) {
+            intBuffer.put(i);
+        }
+
+        System.out.println(intBuffer.position());
+        System.out.println(intBuffer.limit());
 
     }
 
