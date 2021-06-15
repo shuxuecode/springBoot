@@ -79,6 +79,5 @@ public class N40 {
         for (List<Integer> list : lists) {
             System.out.println(list);
         }
-
     }
 }
