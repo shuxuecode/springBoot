@@ -1,15 +1,9 @@
 
 
 
-
-
-
-
-
-
 ## Dropwizard-Metrics统计连接池使用情况
 
-1.pom.xml加上Dropwizard-Metrics配置
+1. pom.xml加上Dropwizard-Metrics配置
 
 ```
 <dependency>
@@ -22,7 +16,7 @@
 </dependency>  
 ```
 
-2在应用启动的时候连接池注册统计接口
+2. 在应用启动的时候连接池注册统计接口
 
 ```
 @Autowired    
