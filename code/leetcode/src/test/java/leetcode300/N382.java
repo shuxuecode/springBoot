@@ -1,7 +1,5 @@
 package leetcode300;
 
-import org.junit.jupiter.api.Test;
-
 import java.util.Random;
 
 /**
@@ -9,7 +7,7 @@ import java.util.Random;
  */
 public class N382 {
 
-    class ListNode {
+    public static class ListNode {
         int val;
         ListNode next;
 
@@ -52,8 +50,7 @@ public class N382 {
     }
 
 
-    @Test
-    void t() {
+    public static void main(String[] args) {
         ListNode node1 = new ListNode(1);
         ListNode node2 = new ListNode(2);
         ListNode node3 = new ListNode(3);
