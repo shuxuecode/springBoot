@@ -4,10 +4,18 @@ import org.junit.jupiter.api.Test;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Random;
 import java.util.Stack;
 
 public class Test1 {
 
+
+    @Test
+    void t(){
+        for (int i = 0; i < 10; i++) {
+            System.out.println(new Random().nextInt(2));
+        }
+    }
 
     @Test
     public void t1() {
