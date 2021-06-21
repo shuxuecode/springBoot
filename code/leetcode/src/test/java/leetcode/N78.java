@@ -5,11 +5,33 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-// todo 需要考虑 1,3 这种情况
+
 public class N78 {
+
+    // 通过
+    public List<List<Integer>> subsets(int[] nums) {
+        List<List<Integer>> res = new ArrayList<>();
+        res.add(new ArrayList<>());
+        dfs(nums, 0, res);
+        return res;
+    }
+
+    public void dfs(int[] nums, int i, List<List<Integer>> res) {
+        if (i >= nums.length) return;
+        int size = res.size();
+        for (int j = 0; j < size; j++) {
+            ArrayList<Integer> list = new ArrayList<>(res.get(j));
+            list.add(nums[i]);
+            res.add(list);
+        }
+        dfs(nums, i + 1, res);
+    }
+
+
     List<List<Integer>> result = new ArrayList<>();
 
-    public List<List<Integer>> subsets(int[] nums) {
+    // 未通过，需要考虑 1,3 这种情况
+    public List<List<Integer>> subsets2(int[] nums) {
         List<Integer> list = new ArrayList<>();
         result.add(list);
 
