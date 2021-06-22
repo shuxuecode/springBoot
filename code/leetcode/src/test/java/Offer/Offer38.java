@@ -3,35 +3,37 @@ package Offer;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 
 /**
  * 输入一个字符串，打印出该字符串中字符的所有排列。
  */
 public class Offer38 {
-    static ArrayList<String> res = new ArrayList<String>();
+    List<String> res = new ArrayList<String>();
 
     public String[] permutation(String s) {
         if (s == null) {
             return null;
         }
-        permutationHelper(s.toCharArray(), 0);
-        String[] strs = new String[res.size()];
-        for (int i = 0; i < res.size(); i++) {
-            strs[i] = res.get(i);
-        }
-        return strs;
+        dfs(s.toCharArray(), 0);
+
+        return res.toArray(new String[res.size()]);
     }
 
-    public void permutationHelper(char[] str, int i) {
+    public void dfs(char[] str, int i) {
         if (i == str.length - 1) {
             res.add(String.valueOf(str));//String.valueOf将对象转换为string
         } else {
+            HashSet<Character> set = new HashSet<>();
             for (int j = i; j < str.length; j++) {
-                if (j != i && str[i] == str[j]) {
+                if (set.contains(str[j])) {
+                    // 遇到重复字符时不交换，直接跳过
                     continue;
                 }
+                set.add(str[j]);
                 swap(str, i, j);
-                permutationHelper(str, i + 1);
+                dfs(str, i + 1);
                 swap(str, i, j);
             }
         }
