@@ -1,6 +1,6 @@
-SpringBoot配置发送Email
+## SpringBoot配置发送Email
 
-引入依赖
+### 引入依赖
 
 在 pom.xml 文件中引入邮件配置：
 
@@ -11,7 +11,7 @@ SpringBoot配置发送Email
 </dependency>
 ```
 
-配置文件
+### 配置文件
 
 ```
 # JavaMailSender 邮件发送的配置
@@ -34,7 +34,7 @@ QQ邮箱->设置->账户->POP3/SMTP服务:开启服务后会获得QQ的授权码
 
 
 
-发送简单文本邮件
+### 发送简单文本邮件
 
 贴 java 代码：
 ```
@@ -60,7 +60,9 @@ public class EmailTest {
     }
 }
 ```
-发送Html邮件
+
+
+### 发送Html邮件
 
 java 代码：
 ```
@@ -86,7 +88,7 @@ java 代码：
     }
 ```
 
-发送带附件的邮件
+### 发送带附件的邮件
 
 java 代码：
 ```
@@ -110,7 +112,7 @@ java 代码：
         mailSender.send(message);
     }
 ```
-发送带静态资源的邮件
+### 发送带静态资源的邮件
 
 java 代码：
 ```
@@ -134,7 +136,8 @@ java 代码：
         mailSender.send(message);
     }
 ```
-发送模板邮件
+
+### 发送模板邮件
 
 在Spring Boot中也能使用模板引擎来实现模板化的邮件发送。关于模板邮件，SpringBoot 原本是支持 velocity，在 1.4 版本后又抛弃了 velocity，暂时只支持 freemaker。
 引入 freemaker 依赖:
@@ -176,3 +179,6 @@ java 代码：
         mailSender.send(message);
     }
 ```
+
+
+---
