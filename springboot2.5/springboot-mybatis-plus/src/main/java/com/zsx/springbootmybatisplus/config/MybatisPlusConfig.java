@@ -7,6 +7,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
+ * 启动 分页插件
+ *
  * @author zsx
  * @date 2021年06月29日 16:51
  */
