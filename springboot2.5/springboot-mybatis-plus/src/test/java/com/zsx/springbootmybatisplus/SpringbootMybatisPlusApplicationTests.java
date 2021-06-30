@@ -21,6 +21,12 @@ class SpringbootMybatisPlusApplicationTests {
     UserDao userDao;
 
     @Test
+    void t2() {
+        List<TUser> list = userDao.testGet();
+        list.forEach(System.out::println);
+    }
+
+    @Test
     void t1() {
 
         // eq 等于
