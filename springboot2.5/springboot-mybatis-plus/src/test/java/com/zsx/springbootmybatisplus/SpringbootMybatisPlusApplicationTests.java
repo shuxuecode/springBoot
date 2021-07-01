@@ -20,6 +20,18 @@ class SpringbootMybatisPlusApplicationTests {
     @Autowired
     UserDao userDao;
 
+
+    @Test
+    void t3() {
+        TUser user = new TUser();
+        user.setUsername("b");
+        user.setPassword("b");
+
+        userDao.insert(user);
+
+        System.out.println(user.getId());
+    }
+
     @Test
     void t2() {
         List<TUser> list = userDao.testGet();
@@ -60,7 +72,6 @@ class SpringbootMybatisPlusApplicationTests {
 
 
         // or  and
-
 
 
         List<TUser> list = userDao.selectList(queryWrapper);

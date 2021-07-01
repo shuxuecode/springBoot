@@ -1,6 +1,10 @@
 package com.zsx.springbootmybatisplus.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
+import org.springframework.data.annotation.Id;
+
 
 /**
  * @author zsx
@@ -9,6 +13,9 @@ import lombok.Data;
 @Data
 public class TUser {
 
+    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY) // 不能使用这种方式
+    @TableId(type = IdType.AUTO)
     private Integer id;
 
     private String username;
