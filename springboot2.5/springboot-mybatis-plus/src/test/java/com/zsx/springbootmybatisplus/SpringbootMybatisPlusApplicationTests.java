@@ -6,6 +6,8 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.metadata.OrderItem;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.zsx.springbootmybatisplus.dao.UserDao;
 import com.zsx.springbootmybatisplus.entity.TUser;
 import org.junit.jupiter.api.Test;
@@ -19,6 +21,21 @@ class SpringbootMybatisPlusApplicationTests {
 
     @Autowired
     UserDao userDao;
+
+
+    @Test
+    void t4() {
+
+        PageHelper.startPage(1,3);
+        List<TUser> list = userDao.testGet();
+
+        PageInfo<TUser> pageInfo = new PageInfo<>(list);
+
+        System.out.println(pageInfo.getTotal());
+        System.out.println(pageInfo.getPages());
+        System.out.println(pageInfo.getSize());
+
+    }
 
 
     @Test
