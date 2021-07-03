@@ -24,9 +24,33 @@ class SpringbootMybatisPlusApplicationTests {
 
 
     @Test
+    void t6() {
+        TUser user = new TUser();
+        user.setUsername("shu");
+
+        userDao.update(user, Wrappers.<TUser>lambdaUpdate().eq(TUser::getId, 1));
+    }
+
+
+    @Test
+    void t5() {
+        TUser tUser = userDao.selectById(1);
+
+        if (tUser != null) {
+            tUser.setUsername("zhao");
+
+            int updateById = userDao.updateById(tUser);
+
+            System.out.println("updateById = " + updateById);
+
+        }
+    }
+
+
+    @Test
     void t4() {
 
-        PageHelper.startPage(1,3);
+        PageHelper.startPage(1, 3);
         List<TUser> list = userDao.testGet();
 
         PageInfo<TUser> pageInfo = new PageInfo<>(list);
