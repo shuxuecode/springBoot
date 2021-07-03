@@ -25,6 +25,8 @@ class SpringbootMybatisPlusApplicationTests {
 
     @Test
     void t6() {
+
+//        更新指定字段
         TUser user = new TUser();
         user.setUsername("shu");
 
@@ -38,7 +40,7 @@ class SpringbootMybatisPlusApplicationTests {
 
         if (tUser != null) {
             tUser.setUsername("zhao");
-
+//          更新整行记录
             int updateById = userDao.updateById(tUser);
 
             System.out.println("updateById = " + updateById);
