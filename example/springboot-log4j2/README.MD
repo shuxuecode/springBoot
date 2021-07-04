@@ -24,5 +24,7 @@ Log4jContextSelector=org.apache.logging.log4j.core.async.AsyncLoggerContextSelec
 
 
 ### 混合异步
+混合异步就是，你可以在应用中同时使用同步日志和异步日志，这使得日志的配置方式更加灵活
 
+添加 AsyncLogger 标签 配置
 
