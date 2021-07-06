@@ -27,6 +27,7 @@ public class N107 {
         }
     }
 
+    // 通过 耗时1ms  超过99%
     public List<List<Integer>> levelOrderBottom(TreeNode root) {
         List<List<Integer>> res = new ArrayList<>();
 
