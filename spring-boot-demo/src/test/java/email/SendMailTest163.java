@@ -13,11 +13,11 @@ public class SendMailTest163 {
 		mailInfo.setMailServerHost("smtp.163.com");
 		mailInfo.setMailServerPort("25");
 		mailInfo.setValidate(true);
-		mailInfo.setUserName("zhaoshuxue2017@163.com"); // 实际发送者
-		mailInfo.setPassword("zhaoshuxue");// 您的邮箱密码
-		mailInfo.setFromAddress("zhaoshuxue2017@163.com"); // 设置发送人邮箱地址
+		mailInfo.setUserName("admin@163.com"); // 实际发送者
+		mailInfo.setPassword("password");// 您的邮箱密码
+		mailInfo.setFromAddress("admin@163.com"); // 设置发送人邮箱地址
 		
-		mailInfo.setToAddress("634790417@qq.com"); // 设置接受者邮箱地址
+		mailInfo.setToAddress("admin@qq.com"); // 设置接受者邮箱地址
 		mailInfo.setSubject("设置邮箱标题");
 		mailInfo.setContent("设置邮箱内容<b>h6</b>");
 		// 这个类主要来发送邮件
