@@ -25,7 +25,7 @@ public class UnitTest {
 		
 		BBB bbb = (BBB) new MyProxy().bind(new BBBImpl());
 		
-		bbb.name("数学");
+		bbb.name("姓名");
 		
 		
 		BBB bind = (BBB) new TestProxy().bind(new BBBImpl(), new MyLogger());
