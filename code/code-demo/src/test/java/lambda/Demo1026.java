@@ -14,14 +14,6 @@ import java.util.concurrent.Executors;
  */
 public class Demo1026 {
 
-    public static void main(String[] args) {
-
-
-
-
-
-    }
-
     @Test
     public void test2(){
 

@@ -6,7 +6,8 @@ import java.util.Iterator;
 import java.util.ServiceLoader;
 
 /**
- * spi全称Service Provider Interface， 服务提供接口， 是Java提供的一套用来被第三方实现或者扩展的API。
+ * spi全称Service Provider Interface， 服务提供接口，
+ * 是Java提供的一套用来被第三方实现或者扩展的API。
  */
 public class SpiTestMain {
 

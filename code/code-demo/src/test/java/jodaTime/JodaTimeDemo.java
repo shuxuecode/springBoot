@@ -27,14 +27,8 @@ public class JodaTimeDemo {
 
     }
 
-
-    public static void main(String[] args) {
-//        test1();
-        test2();
-    }
-
-
-    public static void test1() {
+    @Test
+    public void test1() {
         DateTime 一月一号 = new DateTime(2018, 1, 1, 0, 0);
         DateTime 一月二号 = new DateTime(2018, 1, 2, 0, 0);
 
@@ -60,7 +54,8 @@ public class JodaTimeDemo {
         System.out.println(parse);
     }
 
-    public static void test2() {
+    @Test
+    public void test2() {
 
         DateTime 一月一号 = new DateTime(2018, 01, 01, 0, 0);
         DateTime 二月一号 = new DateTime(2018, 02, 01, 0, 0);
