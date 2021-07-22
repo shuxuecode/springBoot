@@ -14,6 +14,11 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.TemporalField;
 import java.util.*;
 
 @SpringBootTest
@@ -21,6 +26,32 @@ class SpringbootMybatisPlusApplicationTests {
 
     @Autowired
     UserDao userDao;
+
+
+    @Test
+    void t7() {
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
+        LocalDateTime startTime = LocalDateTime.parse("2020-11-02 00:00:00", formatter);
+        LocalDateTime endTime = LocalDateTime.parse("2020-11-27 14:28:52", formatter);
+
+        Instant instant = startTime.atZone(ZoneId.systemDefault()).toInstant();
+        Date startDate = Date.from(instant);
+
+        Date endDate = Date.from(endTime.atZone(ZoneId.systemDefault()).toInstant());
+
+
+        QueryWrapper<TUser> queryWrapper = new QueryWrapper<>();
+//        queryWrapper.between("create_time", startDate, endDate);
+
+//        queryWrapper.ge("create_time", startDate);
+        queryWrapper.le("create_time", startDate);
+
+        List<TUser> list = userDao.selectList(queryWrapper);
+
+        list.forEach(System.out::println);
+    }
 
 
     @Test

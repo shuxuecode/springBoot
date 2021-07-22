@@ -9,6 +9,8 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * 启动 分页插件
+ * <p>
+ * 可以多个插件共存
  *
  * @author zsx
  * @date 2021年06月29日 16:51
