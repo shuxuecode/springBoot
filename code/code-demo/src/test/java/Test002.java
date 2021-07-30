@@ -8,6 +8,14 @@ import java.util.Date;
 public class Test002 {
 
     @Test
+    void t2(){
+        // todo
+        int num = 13 & 17;
+        System.out.println(num); // 1
+
+    }
+
+    @Test
     void t1(){
         long time = System.currentTimeMillis();
 
