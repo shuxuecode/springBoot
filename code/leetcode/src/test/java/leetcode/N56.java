@@ -3,12 +3,70 @@ package leetcode;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
 
 // todo
 public class N56 {
 
 
+    public int[][] merge3(int[][] intervals) {
+        Arrays.sort(intervals, (x, y) -> x[0] - y[0]);
+
+        int len = intervals.length;
+        int[][] merge = new int[len][2];
+
+        int k = 0;
+        int i = 0;
+        while (i < len) {
+            int t = intervals[i][1];
+            int j = i + 1;
+
+            while (j < len && t >= intervals[j][0]) {
+                t = Math.max(t, intervals[j][1]);
+                j++;
+            }
+            merge[k][0] = intervals[i][0];
+            merge[k][1] = t;
+            k++;
+
+            i = j;
+        }
+
+        return Arrays.copyOf(merge, k);
+    }
     public int[][] merge(int[][] intervals) {
+        Arrays.sort(intervals, new Comparator<int[]>() {
+            public int compare(int[] interval1, int[] interval2) {
+                return interval1[0] - interval2[0];
+            }
+        });
+
+        List<int[]> merged = new ArrayList<int[]>();
+
+        for (int i = 0; i < intervals.length; ) {
+
+            int t = intervals[i][1];
+            int j = i + 1;
+            while (j < intervals.length && intervals[j][0] <= t) {
+                t = Math.max(t, intervals[j][1]);
+                j++;
+            }
+
+//            merged.add();  // todo
+
+            i = j;
+        }
+
+        return merged.toArray(new int[merged.size()][]);
+
+    }
+
+
+
+    // case无法全通过
+    public int[][] merge2(int[][] intervals) {
         ArrayList<int[]> list = new ArrayList<>();
 
         int length = intervals.length;
