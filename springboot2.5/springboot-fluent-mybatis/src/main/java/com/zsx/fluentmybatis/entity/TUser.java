@@ -1,4 +1,4 @@
-package com.zsx.springbootmybatisplus.entity;
+package com.zsx.fluentmybatis.entity;
 
 import cn.org.atool.fluent.mybatis.annotation.FluentMybatis;
 import cn.org.atool.fluent.mybatis.annotation.TableField;
@@ -7,8 +7,6 @@ import cn.org.atool.fluent.mybatis.base.RichEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
-
-import java.util.Date;
 
 
 /**

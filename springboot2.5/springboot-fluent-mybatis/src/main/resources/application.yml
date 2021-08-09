@@ -22,7 +22,7 @@ logging:
     root: info
     com:
       zsx:
-        springbootmybatisplus:
+        fluentmybatis:
           mapper: debug
 
 

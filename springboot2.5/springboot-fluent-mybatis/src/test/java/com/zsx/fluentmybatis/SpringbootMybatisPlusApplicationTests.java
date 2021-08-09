@@ -1,9 +1,9 @@
-package com.zsx.springbootmybatisplus;
+package com.zsx.fluentmybatis;
 
 import com.github.pagehelper.PageHelper;
-import com.zsx.springbootmybatisplus.entity.TUser;
-import com.zsx.springbootmybatisplus.mapper.TUserMapper;
-import com.zsx.springbootmybatisplus.wrapper.TUserQuery;
+import com.zsx.fluentmybatis.entity.TUser;
+import com.zsx.fluentmybatis.mapper.TUserMapper;
+import com.zsx.fluentmybatis.wrapper.TUserQuery;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

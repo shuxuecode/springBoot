@@ -1,4 +1,4 @@
-package com.zsx.springbootmybatisplus.config;
+package com.zsx.fluentmybatis.config;
 
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.springframework.context.annotation.Bean;

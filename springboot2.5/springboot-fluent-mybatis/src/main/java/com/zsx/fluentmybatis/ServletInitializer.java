@@ -1,4 +1,4 @@
-package com.zsx.springbootmybatisplus;
+package com.zsx.fluentmybatis;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

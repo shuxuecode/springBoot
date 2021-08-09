@@ -1,13 +1,11 @@
-package com.zsx.springbootmybatisplus;
+package com.zsx.fluentmybatis;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-//@MapperScan({"com.zsx.springbootmybatisplus.mapper"})
-@MapperScan({"com.zsx.springbootmybatisplus.mapper"})
-//            com.zsx.springbootmybatisplus.mapper;
+@MapperScan({"com.zsx.fluentmybatis.mapper"})
 public class SpringbootMybatisPlusApplication {
 
     public static void main(String[] args) {
