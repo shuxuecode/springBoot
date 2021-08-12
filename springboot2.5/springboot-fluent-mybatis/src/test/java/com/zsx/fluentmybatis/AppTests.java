@@ -1,5 +1,6 @@
 package com.zsx.fluentmybatis;
 
+import cn.org.atool.fluent.mybatis.If;
 import com.github.pagehelper.PageHelper;
 import com.zsx.fluentmybatis.entity.TUser;
 import com.zsx.fluentmybatis.helper.TUserWrapperHelper;
@@ -67,23 +68,39 @@ class AppTests {
 
     @Test
     void t5() {
-//        TUser tUser = userDao.selectById(1);
 
-//        if (tUser != null) {
-//            tUser.setUsername("zhao");
-//          更新整行记录
+        String name = "a";
+        name = "";
 
+        TUserQuery query = TUserQuery.query()
+                .where.username().eq(name, If::notBlank).end();
 
-//        }
+        List<TUser> list = tUserMapper.listEntity(query);
+
+        list.forEach(System.out::println);
+
     }
 
 
+    // 可以使用，但需要注入pagehelper拦截器
     @Test
-    void t4() {
+    void pageHelper分页() {
+        PageHelper.startPage(2,2);
+        TUserQuery query = TUserQuery.query().where.end();
 
-        PageHelper.startPage(1, 3);
+        List<TUser> list = tUserMapper.listEntity(query);
 
+        list.forEach(System.out::println);
+    }
 
+    @Test
+    void 分页() {
+
+        TUserQuery query = TUserQuery.query().where.end().limit(1, 2);
+
+        List<TUser> list = tUserMapper.listEntity(query);
+
+        list.forEach(System.out::println);
     }
 
 
@@ -164,6 +181,12 @@ class AppTests {
     }
 
 
+    /*
+    语法：
+     .where
+    .字段().条件(条件参数)
+    .end()
+    * */
     @Test
     void 条件查询() {
 
@@ -193,9 +216,12 @@ class AppTests {
 
     @Test
     void 查询() {
-
         TUserQuery userQuery = TUserQuery.query().where.username().notNull().end();
         userQuery = TUserQuery.query().where.end();
+
+        // 排序
+        userQuery = TUserQuery.query().where.end()
+                .orderBy.id().desc().end();
 
         List<TUser> list = tUserMapper.listEntity(userQuery);
 
