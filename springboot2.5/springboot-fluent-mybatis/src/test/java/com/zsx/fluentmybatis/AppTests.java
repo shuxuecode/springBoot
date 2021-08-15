@@ -16,6 +16,7 @@ import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -30,8 +31,9 @@ class AppTests {
 
 
     @Test
-    void t7() {
+    void 时间范围查询() {
 
+        // todo zsx
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
         LocalDateTime startTime = LocalDateTime.parse("2020-11-02 00:00:00", formatter);
@@ -52,6 +54,35 @@ class AppTests {
 //        List<TUser> list = userDao.selectList(queryWrapper);
 
 //        list.forEach(System.out::println);
+    }
+
+    @Test
+    void 比较查询() {
+        TUserQuery query = TUserQuery.query().where.id().ge(3).and.id().le(8).end();
+
+        List<TUser> list = tUserMapper.listEntity(query);
+
+        list.forEach(System.out::println);
+
+    }
+    @Test
+    void 范围查询() {
+
+        TUserQuery query = TUserQuery.query().where.id().between(1, 5).end();
+
+        List<TUser> list = tUserMapper.listEntity(query);
+
+        list.forEach(System.out::println);
+
+
+        System.out.println("---");
+
+        query = TUserQuery.query().where.id().in(new int[]{5, 6, 7}).end();
+
+        list = tUserMapper.listEntity(query);
+
+        list.forEach(System.out::println);
+
     }
 
 
@@ -85,7 +116,7 @@ class AppTests {
     // 可以使用，但需要注入pagehelper拦截器
     @Test
     void pageHelper分页() {
-        PageHelper.startPage(2,2);
+        PageHelper.startPage(2, 2);
         TUserQuery query = TUserQuery.query().where.end();
 
         List<TUser> list = tUserMapper.listEntity(query);
