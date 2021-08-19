@@ -162,6 +162,7 @@ class AppTests {
         TUserUpdate userUpdate = TUserUpdate.defaultUpdater()
                 .update.username().is("a")
                 .set.password().is("a")
+                .set.createTime().is(new Date())
                 .end().where.id().eq(5).end();
 
         int update = tUserMapper.updateBy(userUpdate);

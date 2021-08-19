@@ -8,6 +8,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
+import java.util.Date;
+
 
 /**
  * @author zsx
@@ -30,6 +32,6 @@ public class TUser extends RichEntity {
     @TableField("password")
     private String password;
 
-//    @TableField("create_time")
-//    private Date createTime;
+    @TableField("create_time")
+    private Date createTime;
 }
