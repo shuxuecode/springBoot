@@ -1,14 +1,21 @@
 import org.joda.time.DateTime;
+import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
 import java.util.Date;
 
 /**
+ *
  */
 public class Test002 {
 
     @Test
-    void t2(){
+    void t3() {
+        Assert.assertTrue("assert true is error", 1 == 2);
+    }
+
+    @Test
+    void t2() {
         // todo
         int num = 13 & 17;
         System.out.println(num); // 1
@@ -16,7 +23,7 @@ public class Test002 {
     }
 
     @Test
-    void t1(){
+    void t1() {
         long time = System.currentTimeMillis();
 
         String timeStr = String.valueOf(time);
