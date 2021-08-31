@@ -2,6 +2,9 @@ package leetcode999;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * 连续的子数组和
  * <p>
