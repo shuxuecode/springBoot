@@ -5,6 +5,9 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Random;
 
+/**
+ * 令牌桶测试
+ */
 public class RateLimiterTest {
 
     @Test
@@ -27,7 +30,7 @@ public class RateLimiterTest {
 
             if (time > 0D) {
 
-                System.out.println(i + ",limited,等待:" + time + "，已开始" + after + "毫秒");
+                System.out.println(i + ",limited,等待:" + time + "，已开始" + after + "毫秒  " + System.currentTimeMillis());
 
             } else {
 
