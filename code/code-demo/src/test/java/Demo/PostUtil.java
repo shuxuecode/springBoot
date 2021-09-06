@@ -16,7 +16,7 @@ import java.util.Map;
 public class PostUtil {
 
     static String postUrl = "http://zhiyuan.hebeeb.com/api/College/Distribute";
-    static String Cookie = "UM_distinctid=163f33057b0124-02013df0d48d5f-2b6f686a-100200-163f33057b1399; loginPhone=180051694045; .AspNetCore.Session=CfDJ8CVAJnDbg2xCr2YiPDBCDW4RHT0ZpRtMK2aMt2EjGpf33CX3ZI%2BAY0cB0%2F2mvmm%2FsmTIarQG13zL7HNnrNcl7yZvfBSp%2BhB%2FjvMWZau66p%2FwNK7l7NA%2BlSSZ04HGJ2YgsZM4Ab5iu0UR%2BT7mquSvVpUyf20QTlIfsb48LN0WO3BI";
+    static String Cookie = "test-cookie-23232323";
 
 
     public static void main(String[] args) {
