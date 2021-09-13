@@ -8,7 +8,6 @@ import com.google.common.primitives.Ints;
 import org.apache.commons.collections4.multiset.HashMultiSet;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
@@ -87,7 +86,7 @@ public class GuavaTest1 {
 
 
     @Test
-    void t4(){
+    void t4() {
         // 一个key对应多个value
         ArrayListMultimap<String, String> multimap = ArrayListMultimap.create();
 

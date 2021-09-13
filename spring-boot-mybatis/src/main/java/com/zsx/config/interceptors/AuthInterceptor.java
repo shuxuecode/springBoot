@@ -26,7 +26,6 @@ public class AuthInterceptor implements HandlerInterceptor {
 	@Override
 	public void afterCompletion(HttpServletRequest arg0, HttpServletResponse arg1, Object arg2, Exception arg3)
 			throws Exception {
-		// TODO Auto-generated method stub
 
 	}
 
@@ -36,7 +35,6 @@ public class AuthInterceptor implements HandlerInterceptor {
 	@Override
 	public void postHandle(HttpServletRequest arg0, HttpServletResponse arg1, Object arg2, ModelAndView arg3)
 			throws Exception {
-		// TODO Auto-generated method stub
 
 	}
 

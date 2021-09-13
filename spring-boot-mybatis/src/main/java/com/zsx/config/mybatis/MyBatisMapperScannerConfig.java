@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
  * @author ZSX
  */
 @Configuration
-//TODO 注意，由于MapperScannerConfigurer执行的比较早，所以必须有下面的注解
+//注意，由于MapperScannerConfigurer执行的比较早，所以必须有下面的注解
 @AutoConfigureAfter({MybatisConfiguration.class})
 public class MyBatisMapperScannerConfig {
 

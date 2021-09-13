@@ -25,8 +25,7 @@ public class MyWebSocketHandler implements WebSocketHandler {
 	}
 
 	@Override
-	public void afterConnectionClosed(WebSocketSession session, CloseStatus arg1) throws Exception {
-		// TODO Auto-generated method stub
+	public void afterConnectionClosed(WebSocketSession session, CloseStatus arg1) throws Exception {		
 		System.out.println("Websocket:" + session.getId() + "已经关闭");
 		Iterator<Entry<String, WebSocketSession>> it = userSocketSessionMap.entrySet().iterator();
 		// 移除Socket会话
@@ -42,7 +41,7 @@ public class MyWebSocketHandler implements WebSocketHandler {
 
 	@Override
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
-		// TODO Auto-generated method stub
+		
 //		String jspCode = (String) session.getHandshakeAttributes().get("jspCode");
 		String jspCode = (String) session.getAttributes().get("jspCode");
 		if (userSocketSessionMap.get(jspCode) == null) {
@@ -57,13 +56,13 @@ public class MyWebSocketHandler implements WebSocketHandler {
 
 	@Override
 	public void handleMessage(WebSocketSession session, WebSocketMessage<?> message) throws Exception {
-		// TODO Auto-generated method stub
+		
 		session.sendMessage(message);
 	}
 
 	@Override
 	public void handleTransportError(WebSocketSession session, Throwable arg1) throws Exception {
-		// TODO Auto-generated method stub
+		
 		if (session.isOpen()) {
 			session.close();
 		}
@@ -81,14 +80,12 @@ public class MyWebSocketHandler implements WebSocketHandler {
 
 	@Override
 	public boolean supportsPartialMessages() {
-		// TODO Auto-generated method stub
+		
 		return false;
 	}
 
 	/**
-	 * 群发 @Title: broadcast @Description: TODO @param: @param
-	 * message @param: @throws IOException @return: void @author: 刘云生 @Date:
-	 * 2016年9月10日 下午4:23:30 @throws
+	 
 	 */
 	public void broadcast(final TextMessage message) throws IOException {
 		Iterator<Entry<String, WebSocketSession>> it = userSocketSessionMap.entrySet().iterator();

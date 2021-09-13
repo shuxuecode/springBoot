@@ -4,6 +4,9 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 
+//import java.lang.instrument.*;
+//import java.lang.instrument.ClassDefinition; // todo
+
 public class Test2 {
 
 

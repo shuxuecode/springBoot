@@ -32,7 +32,6 @@ public class TestController {
 		try {
 			Thread.sleep(10000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return "Hello " + request.getServletPath();
@@ -49,7 +48,7 @@ public class TestController {
 			public void run() {
 				object.put("code", 200);
 				object.put("message", "阿斯蒂芬加拉设计费拉丝机枫蓝国际啦爱神的箭法拉时代峻峰两份礼物而");
-				object.put("data", "{\"list\":[{\"id\":80,\"email\":\"zhanglin@qiand.me\"}]}");
+				object.put("data", "{\"list\":[{\"id\":80,\"email\":\"123456@qq.com\"}]}");
 				try {
 					Thread.sleep(2000);
 				} catch (InterruptedException e) {
