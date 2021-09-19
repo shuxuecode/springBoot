@@ -14,6 +14,7 @@ public class ThreadPoolTest1 {
     private TaskThreadPoolExecutor executor = new TaskThreadPoolExecutor(2, 4, 5L, TimeUnit.SECONDS, queue);
 
     {
+
         queue.setExecutor(executor);
     }
 
