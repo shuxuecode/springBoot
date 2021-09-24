@@ -12,6 +12,7 @@ public interface 默认方法接口 {
      * 接口提供的默认方法会被接口的实现类继承或者覆写
      */
     default String get() {
+        System.out.println("接口方法");
         return "测试";
     }
 }

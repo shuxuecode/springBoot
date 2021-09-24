@@ -20,7 +20,6 @@ public class Test002 {
         int num = 13 & 17;
         System.out.println(num); // 1
 
-
     }
 
     @Test
