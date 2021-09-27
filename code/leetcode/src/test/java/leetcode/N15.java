@@ -2,6 +2,7 @@ package leetcode;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 // TODO zsx
@@ -12,6 +13,7 @@ public class N15 {
     public List<List<Integer>> threeSum(int[] nums) {
 
         quickSort(nums, 0, nums.length - 1);
+
 
 
 
@@ -50,10 +52,7 @@ public class N15 {
 
         quickSort(nums, 0, nums.length - 1);
 
-        System.out.println(nums);
-        for (int i = 0; i < nums.length; i++) {
-            System.out.println(nums[i]);
-        }
+        System.out.println(Arrays.toString(nums));
 
 
     }
