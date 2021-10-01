@@ -3,12 +3,15 @@ package guavaTest;
 import com.google.common.base.Joiner;
 import com.google.common.base.Splitter;
 import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 import com.google.common.primitives.Ints;
 import org.apache.commons.collections4.multiset.HashMultiSet;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -99,5 +102,37 @@ public class GuavaTest1 {
         multimap.put("c", "d");
 
         System.out.println(multimap); // {a=[a, aa], b=[b], c=[c, d]}
+    }
+
+    @Test
+    void t5() {
+        ImmutableMap<Object, Object> map = ImmutableMap.builderWithExpectedSize(4).put("1", "2").build();
+
+        ImmutableMap<String, String> immutableMap = ImmutableMap.of("3", "4");
+
+        System.out.println(map);
+        System.out.println(immutableMap);
+
+        HashMap<String, String> stringStringHashMap = new HashMap<>(immutableMap);
+
+        System.out.println(stringStringHashMap);
+
+        HashMap<String, String> hashMap = new HashMap() {
+
+            {
+                put("5", "6");
+            }
+        };
+
+        System.out.println(hashMap);
+
+
+
+    }
+
+    @Test
+    void t6(){
+        Long id = 0L;
+
     }
 }
