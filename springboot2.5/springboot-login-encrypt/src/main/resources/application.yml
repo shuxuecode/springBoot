@@ -3,3 +3,9 @@ server:
   port: 9090
 
 
+spring:
+  thymeleaf:
+    cache: false
+
+
+

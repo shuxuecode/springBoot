@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>登录</title>
@@ -8,9 +8,78 @@
 
 
 
+<input type="text" name="username" id="username" placeholder="输入您的用户名" required="true"/>
+<br />
+<input type="password" name="password" id="password" placeholder="输入您的密码" required="true"/>
+<br />
 
-    <script>
+<button type="submit" id="button">登录</button>
 
-    </script>
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/jsencrypt/3.2.1/jsencrypt.min.js"></script>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    var pubKey = /*[[${key}]]*/ 'null';
+    /*]]>*/
+
+
+
+
+</script>
+<script>
+    var jsencrypt = undefined;
+    $(function () {
+        if (pubKey && pubKey !== 'null') {
+            jsencrypt = new JSEncrypt();
+            jsencrypt.setPublicKey(pubKey);
+        }
+    });
+
+    $("#button").click(function () {
+        login();
+    });
+
+    function login(){
+        var name = $.trim($("#username").val());
+        var pwd = $.trim($("#password").val());
+
+        if (name == '') {
+            alert('用户名不能为空！')
+            $("#username").focus();
+            return;
+        }
+        if (pwd == '') {
+            alert('密码不能为空！')
+            $("#password").focus();
+            return;
+        }
+
+        pwd = jsencrypt.encrypt(pwd)
+
+        $.ajax({
+            url: "/loginAction",
+            type: "post",
+            data: {
+                username: name,
+                password: pwd
+            },
+            dataType: "JSON",
+            success: function (data, status, xhr) {
+                console.info(data)
+            },
+            error: function (xhr, errorText, errorType) {
+
+            }
+        });
+
+    }
+
+
+
+
+</script>
+
 </body>
 </html>
