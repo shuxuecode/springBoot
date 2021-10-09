@@ -373,6 +373,17 @@
             <version>5.7.13</version>
         </dependency>
 
+
+        <!-- https://mvnrepository.com/artifact/com.alibaba/dubbo -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>dubbo</artifactId>
+<!--            <version>2.6.8</version>-->
+<!--            <version>2.5.9</version>-->
+            <version>2.5.8</version>
+        </dependency>
+
+
     </dependencies>
 
 
