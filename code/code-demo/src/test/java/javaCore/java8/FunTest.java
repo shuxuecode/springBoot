@@ -1,5 +1,7 @@
 package javaCore.java8;
 
+import javaCore.java8.FunctionInterfaceTest.test1.FunTestInterface;
+
 public class FunTest {
 
 

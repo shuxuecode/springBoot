@@ -1,9 +1,30 @@
 package hashMapTest;
 
+import com.google.common.collect.Maps;
+import org.checkerframework.checker.nullness.qual.Nullable;
 import org.junit.jupiter.api.Test;
+
+import java.util.HashMap;
 
 public class Test1 {
 
+
+    @Test
+    public void test4() {
+        HashMap<String, String> map = Maps.newHashMap();
+        map.put("a", "a");
+        map.put("b", "b");
+
+        System.out.println(map);
+
+        map.remove("a");
+
+        System.out.println(map);
+
+        map.remove("dd");
+
+        System.out.println(map);
+    }
 
     @Test
     public void test3() {
