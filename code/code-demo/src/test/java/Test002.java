@@ -3,6 +3,7 @@ import cn.hutool.core.util.CharsetUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.asymmetric.KeyType;
 import cn.hutool.crypto.asymmetric.RSA;
+import com.alibaba.fastjson.JSON;
 import org.joda.time.DateTime;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
@@ -19,6 +20,14 @@ import java.util.Date;
  *
  */
 public class Test002 {
+
+
+    @Test void t6(){
+        //System.out.println(String.valueOf(null)); // 这个抛异常
+        System.out.println(String.valueOf(Boolean.TRUE));
+        System.out.println(String.valueOf(Boolean.FALSE ));
+        System.out.println(JSON.toJSONString(null));
+    }
 
     @Test
     void t5(){
