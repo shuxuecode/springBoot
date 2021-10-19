@@ -11,6 +11,8 @@ import org.junit.jupiter.api.Test;
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
@@ -21,6 +23,12 @@ import java.util.Date;
  */
 public class Test002 {
 
+    @Test void t7(){
+        //String str = (new BigDecimal("10").divide(new BigDecimal("100"), 0, RoundingMode.HALF_UP)).toString();
+        System.out.println((new BigDecimal("10").divide(new BigDecimal("100"), 0, RoundingMode.HALF_UP)).toString());
+        System.out.println((new BigDecimal("10").divide(new BigDecimal("100"), 2, RoundingMode.HALF_UP)).toString());
+        System.out.println((new BigDecimal("1").divide(new BigDecimal("100"), 2, RoundingMode.HALF_UP)).toString());
+    }
 
     @Test void t6(){
         //System.out.println(String.valueOf(null)); // 这个抛异常
