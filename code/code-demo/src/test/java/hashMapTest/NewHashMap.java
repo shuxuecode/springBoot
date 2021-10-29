@@ -337,6 +337,8 @@ public class NewHashMap<K,V> extends AbstractMap<K,V>
      */
     static final int hash(Object key) {
         int h;
+        // 计算hash值的方法，核心的计算逻辑相同，都是使用key对应的hashCode与其hashCode右移16位的结果进行异或操作。
+        // 此处，将高16位与低16位进行异或的操作称之为扰动函数，目的是将高位的特征融入到低位之中，降低哈希冲突的概率。
         return (key == null) ? 0 : (h = key.hashCode()) ^ (h >>> 16);
     }
 
@@ -376,6 +378,7 @@ public class NewHashMap<K,V> extends AbstractMap<K,V>
     /**
      * Returns a power of two size for the given target capacity.
      */
+    // 返回2的幂
     static final int tableSizeFor(int cap) {
         int n = cap - 1;
         n |= n >>> 1;
@@ -658,18 +661,23 @@ public class NewHashMap<K,V> extends AbstractMap<K,V>
                    boolean evict) {
         Node<K,V>[] tab; Node<K,V> p; int n, i;
         if ((tab = table) == null || (n = tab.length) == 0)
+            // 如果底层数组table没有初始化，则通过resize方法初始化数组，说明Map不是在new的时候初始化，而是在第一次put时候才初始化
             n = (tab = resize()).length;
         if ((p = tab[i = (n - 1) & hash]) == null)
+            // 没有hash冲突
             tab[i] = newNode(hash, key, value, null);
         else {
             Node<K,V> e; K k;
 //            先比较hash，效率高
             if (p.hash == hash &&
                     ((k = p.key) == key || (key != null && key.equals(k))))
+                // 当前哈希桶位置中的节点与输入元素的hash值一致，则直接替换
                 e = p;
             else if (p instanceof TreeNode)
+                // 当hash值不一致时，遍历该位置上的红黑树节点，选择合适位置插入
                 e = ((TreeNode<K,V>)p).putTreeVal(this, tab, hash, key, value);
             else {
+                // 当hash值不一致时，遍历该位置上的链表节点，选择合适位置插入
                 for (int binCount = 0; ; ++binCount) {
                     if ((e = p.next) == null) {
                         p.next = newNode(hash, key, value, null);
@@ -692,9 +700,10 @@ public class NewHashMap<K,V> extends AbstractMap<K,V>
             }
         }
         ++modCount;
+        // 扩容
         if (++size > threshold)
             resize();
-        afterNodeInsertion(evict);
+        afterNodeInsertion(evict); // 回调
         return null;
     }
 
@@ -708,16 +717,18 @@ public class NewHashMap<K,V> extends AbstractMap<K,V>
      * @return the table
      */
     final Node<K,V>[] resize() {
+        // 使用局部变量持有table
         Node<K,V>[] oldTab = table;
         int oldCap = (oldTab == null) ? 0 : oldTab.length;
         int oldThr = threshold;
         int newCap, newThr = 0;
         if (oldCap > 0) {
+            // 如果原容量已经大于等于最大容量，则不再扩容
             if (oldCap >= MAXIMUM_CAPACITY) {
                 threshold = Integer.MAX_VALUE;
                 return oldTab;
             }
-
+            // 否则翻倍扩容
             else if ((newCap = oldCap << 1) < MAXIMUM_CAPACITY &&
                     oldCap >= DEFAULT_INITIAL_CAPACITY)
                 newThr = oldThr << 1; // double threshold
@@ -736,19 +747,30 @@ public class NewHashMap<K,V> extends AbstractMap<K,V>
         threshold = newThr;
         @SuppressWarnings({"rawtypes","unchecked"})
         Node<K,V>[] newTab = (Node<K,V>[])new Node[newCap];
+        // 将新底层数组赋值给全局变量table
         table = newTab;
         if (oldTab != null) {
+            // 原数组不为null，数据迁移
             for (int j = 0; j < oldCap; ++j) {
                 Node<K,V> e;
                 if ((e = oldTab[j]) != null) {
                     oldTab[j] = null;
                     if (e.next == null)
+                        // 链表只有一个元素，不存在哈希冲突的节点，直接copy
                         newTab[e.hash & (newCap - 1)] = e;
                     else if (e instanceof TreeNode)
+                        // 如果是Tree结构，则按红黑树扩容
                         ((TreeNode<K,V>)e).split(this, newTab, j, oldCap);
                     else { // preserve order
+                        // 链表数据迁移
+                        /* 为了避免之前版本中并发扩容所导致的死链问题，引入了高低位链表辅助进行扩容操作。
+
+                        */
+                        // 低位链表
                         Node<K,V> loHead = null, loTail = null;
+                        // 高位链表
                         Node<K,V> hiHead = null, hiTail = null;
+                        // 下一个节点引用
                         Node<K,V> next;
                         do {
                             next = e.next;
@@ -767,10 +789,14 @@ public class NewHashMap<K,V> extends AbstractMap<K,V>
                                 hiTail = e;
                             }
                         } while ((e = next) != null);
+                        // 存在低位链表，则链表尾设置为null
+                        // 将链表放到新数组，索引j
                         if (loTail != null) {
                             loTail.next = null;
                             newTab[j] = loHead;
                         }
+                        // 存在高位链表，则链表尾设置为null
+                        // 将链表放到新数组，索引j + oldCap
                         if (hiTail != null) {
                             hiTail.next = null;
                             newTab[j + oldCap] = hiHead;
