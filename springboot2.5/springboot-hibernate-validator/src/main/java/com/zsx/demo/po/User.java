@@ -24,7 +24,7 @@ public class User {
     @Email(message = "邮箱格式错误")
     private String email;
 
-
+    @NotBlank(message = "手机号不能为空")
     private String elephone;
 
     private Date birthday;

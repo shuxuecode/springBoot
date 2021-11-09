@@ -6,3 +6,4 @@ target/
 .classpath
 .project
 .mvn/
+.DS_Store
