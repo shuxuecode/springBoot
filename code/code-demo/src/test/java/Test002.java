@@ -23,6 +23,12 @@ import java.util.Date;
  */
 public class Test002 {
 
+    @Test void t8(){
+
+
+
+
+    }
     @Test void t7(){
         //String str = (new BigDecimal("10").divide(new BigDecimal("100"), 0, RoundingMode.HALF_UP)).toString();
         System.out.println((new BigDecimal("10").divide(new BigDecimal("100"), 0, RoundingMode.HALF_UP)).toString());
@@ -34,7 +40,7 @@ public class Test002 {
         //System.out.println(String.valueOf(null)); // 这个抛异常
         System.out.println(String.valueOf(Boolean.TRUE));
         System.out.println(String.valueOf(Boolean.FALSE ));
-        System.out.println(JSON.toJSONString(null));
+        System.out.println(JSON.toJSONString(null).contains());
     }
 
     @Test
