@@ -6,6 +6,8 @@
         <id property="id" column="id"/>
         <result property="username" column="username"/>
         <result property="password" column="password"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
     </resultMap>
 
 <!--    <resultMap id="m_r" type="com.baomidou.mybatisplus.samples.resultmap.entity.Man" extends="m_b">-->

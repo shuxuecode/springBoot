@@ -1,8 +1,11 @@
 package com.zsx.springbootmybatisplus.entity;
 
+import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
+import org.apache.ibatis.annotations.Insert;
 import org.springframework.data.annotation.Id;
 
 import java.util.Date;
@@ -31,5 +34,10 @@ public class TUser {
 
     private String password;
 
+    // 该注解： 当执行insert语句才进行填充这个字段
+    @TableField(fill = FieldFill.INSERT)
     private Date createTime;
+
+    @TableField(fill = FieldFill.UPDATE)
+    private Date updateTime;
 }

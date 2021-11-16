@@ -67,7 +67,7 @@ class SpringbootMybatisPlusApplicationTests {
 
     @Test
     void t5() {
-        TUser tUser = userDao.selectById(1);
+        TUser tUser = userDao.selectById(11);
 
         if (tUser != null) {
             tUser.setUsername("zhao");
@@ -98,8 +98,8 @@ class SpringbootMybatisPlusApplicationTests {
     @Test
     void t3() {
         TUser user = new TUser();
-        user.setUsername("b");
-        user.setPassword("b");
+        user.setUsername("c");
+        user.setPassword("c");
 
         userDao.insert(user);
 
