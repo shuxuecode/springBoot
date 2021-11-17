@@ -34,7 +34,7 @@ public class CompletableFutureDemo {
                 System.out.println(getNow() + " : " + num);
             }, threadPoolExecutor);
 
-            // todo 
+            // todo
             //CompletableFuture<Void> voidCompletableFuture = new CompletableFuture<>();
             //voidCompletableFuture.handle()
 
