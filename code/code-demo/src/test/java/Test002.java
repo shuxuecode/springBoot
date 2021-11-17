@@ -40,7 +40,7 @@ public class Test002 {
         //System.out.println(String.valueOf(null)); // 这个抛异常
         System.out.println(String.valueOf(Boolean.TRUE));
         System.out.println(String.valueOf(Boolean.FALSE ));
-        System.out.println(JSON.toJSONString(null).contains());
+        System.out.println(JSON.toJSONString(null));
     }
 
     @Test

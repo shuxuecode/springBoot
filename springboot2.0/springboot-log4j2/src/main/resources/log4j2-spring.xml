@@ -1,13 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="WARN">
+    <!--  status 表示log4j2本身打印日志的级别  -->
+
+
+    <Properties>
+        <Property name="logPath">/tmp/logs/springboot</Property>
+        <Property name="logFile" value="info.log"/>
+    </Properties>
+
+    <!--  定义多个  -->
     <Appenders>
+        <!-- 配置输出到控制台 -->
         <Console name="Console" target="SYSTEM_OUT">
-            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+            <!-- 日志格式 -->
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
         </Console>
+
+        <!--文件会打印出所有信息，这个log每次运行程序会自动清空，由append属性决定，这个也挺有用的，适合临时测试用-->
+        <File name="log" fileName="/tmp/logs/test.log" append="false">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5level %class{36} %L %M - %msg%xEx%n"/>
+        </File>
+
+        <!--   ${sys:user.name}     -->
+        <RollingFile name="RollingFileInfo" fileName="/tmp/logs/info.log"
+                     filePattern="/tmp/logs/$${date:yyyy-MM}/info-%d{yyyy-MM-dd}-%i.log">
+            <!--控制台只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch）-->
+            <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="[%d{HH:mm:ss:SSS}] [%p] - %l - %m%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="100 MB"/>
+            </Policies>
+            <!-- DefaultRolloverStrategy属性如不设置，则默认为最多同一文件夹下7个文件，这里设置了20 -->
+            <DefaultRolloverStrategy max="20"/>
+        </RollingFile>
+
     </Appenders>
+
+
+    <!--  定义Loggers  -->
     <Loggers>
+        <Logger name="org.mybatis" level="info" additivity="false">
+            <AppenderRef ref="Console"/>
+        </Logger>
+
+
         <Root level="debug">
-            <AppenderRef ref="Console" />
+            <AppenderRef ref="Console"/>
+            <appender-ref ref="RollingFileInfo"/>
         </Root>
     </Loggers>
 </Configuration>

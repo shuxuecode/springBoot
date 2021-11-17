@@ -33,6 +33,12 @@ public class CompletableFutureDemo {
                 }
                 System.out.println(getNow() + " : " + num);
             }, threadPoolExecutor);
+
+            // todo 
+            //CompletableFuture<Void> voidCompletableFuture = new CompletableFuture<>();
+            //voidCompletableFuture.handle()
+
+
         }
 
         System.out.println(getNow() + "  主线程执行结束了");

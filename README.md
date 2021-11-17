@@ -36,6 +36,9 @@
 ## springboot 2.0.x 系列
 
 - [springBoot使用log4j2作为日志组件](example/springboot-log4j2/README.MD)
+- [springBoot-admin服务端](springboot2.0/springboot-admin-server/readme.md)
+- [springBoot-admin客户端](springboot2.0/springboot-admin-client/readme.md)
+
 
 ## springboot 1.x 系列
 

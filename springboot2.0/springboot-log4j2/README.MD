@@ -6,6 +6,7 @@ TODO
 
 log4j2.xml
 
+**log4j2.xml的优先级要比log4j2-spring.xml的高**
 
 
 
