@@ -38,6 +38,14 @@
 - [springBoot使用log4j2作为日志组件](example/springboot-log4j2/README.MD)
 - [springBoot-admin服务端](springboot2.0/springboot-admin-server/readme.md)
 - [springBoot-admin客户端](springboot2.0/springboot-admin-client/readme.md)
+- 
+- [springBoot-使用缓存](springboot2.0/springboot-cache/README.MD)
+- 
+- [springBoot-derby内存数据库 todo ](springboot2.0/springboot-derby/readme.md)
+
+- [springBoot-集成es](springboot2.0/springboot-es/README.MD)
+
+
 
 
 ## springboot 1.x 系列
