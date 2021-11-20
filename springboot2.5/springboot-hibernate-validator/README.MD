@@ -28,7 +28,24 @@ ValidatorFactory validatorFactory = Validation.byProvider(HibernateValidator.cla
 Validator validator = validatorFactory.getValidator();
 ```
 
+
+
+
+
+
 ## 注解
+
+
+### @Valid 和 @Validated 的区别
+
+@Valid
+- javax.validation包,jdk提供的
+
+@Validated
+- org.springframework.validation.annotation包，spring提供的
+- 支持分组和排序
+
+
 
 ### 对象增加验证注解
 
