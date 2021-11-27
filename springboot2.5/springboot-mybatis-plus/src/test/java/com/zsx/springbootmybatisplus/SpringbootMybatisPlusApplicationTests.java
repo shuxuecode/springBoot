@@ -1,10 +1,12 @@
 package com.zsx.springbootmybatisplus;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.metadata.OrderItem;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.baomidou.mybatisplus.extension.conditions.query.LambdaQueryChainWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -27,6 +29,30 @@ class SpringbootMybatisPlusApplicationTests {
     @Autowired
     UserDao userDao;
 
+
+    // 链式查询方式
+    @Test
+    void t9() {
+        LambdaQueryChainWrapper<TUser> wrapper = new LambdaQueryChainWrapper<TUser>(userDao);
+        //wrapper.eq(TUser::getUsername, "shu");
+        wrapper.isNotNull(TUser::getUsername);
+
+        List<TUser> list = wrapper.list();
+
+        list.forEach(System.out::println);
+
+    }
+
+    @Test
+    void t8() {
+        LambdaQueryWrapper<TUser> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(TUser::getUsername, "shu");
+
+        List<TUser> list = userDao.selectList(queryWrapper);
+
+        list.forEach(System.out::println);
+
+    }
 
     @Test
     void t7() {
