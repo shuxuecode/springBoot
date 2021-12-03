@@ -17,6 +17,7 @@ import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.util.Date;
+import java.util.HashSet;
 
 /**
  *
@@ -25,7 +26,10 @@ public class Test002 {
 
     @Test void t8(){
 
+        HashSet<String> set = new HashSet<>();
+        set.add("aaa");
 
+        System.out.println(set.iterator().next());
 
 
     }
