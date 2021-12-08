@@ -4,7 +4,7 @@ import com.alibaba.excel.annotation.ExcelProperty;
 import com.alibaba.excel.metadata.BaseRowModel;
 
 /**
- * @author zhaoshuxue3
+ * @author zsx
  * @Date 2019/8/15 14:16
  **/
 public class BaseData extends BaseRowModel {

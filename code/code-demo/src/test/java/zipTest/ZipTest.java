@@ -11,7 +11,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
 /**
- * @author zhaoshuxue3
+ * @author zsx
  * @Date 2019/4/16 19:02
  **/
 public class ZipTest {

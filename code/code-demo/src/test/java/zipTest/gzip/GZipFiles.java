@@ -5,7 +5,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * @author zhaoshuxue3
+ * @author zsx
  * @Date 2019/7/17 11:41
  **/
 public class GZipFiles {

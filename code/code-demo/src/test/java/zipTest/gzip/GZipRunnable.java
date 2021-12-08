@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.zip.GZIPOutputStream;
 
 /**
- * @author zhaoshuxue3
+ * @author zsx
  * @Date 2019/7/17 11:38
  **/
 public class GZipRunnable implements Runnable {

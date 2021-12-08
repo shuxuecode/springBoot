@@ -3,7 +3,7 @@ package zipTest.gzip;
 import java.io.File;
 
 /**
- * @author zhaoshuxue3
+ * @author zsx
  * @Date 2019/7/17 11:37
  **/
 public class GZip压缩测试 {
