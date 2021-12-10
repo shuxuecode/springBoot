@@ -32,6 +32,9 @@ public class Test002 {
         System.out.println(set.iterator().next());
 
 
+        System.out.println(Boolean.TRUE.toString());
+        System.out.println(Boolean.FALSE.toString());
+
     }
     @Test void t7(){
         //String str = (new BigDecimal("10").divide(new BigDecimal("100"), 0, RoundingMode.HALF_UP)).toString();

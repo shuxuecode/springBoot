@@ -1,0 +1,12 @@
+
+
+
+
+spring:
+  profile:
+    active: dev
+
+
+
+
+# todo zsx
