@@ -1,4 +1,4 @@
-package com.zsx.util;
+package Demo;
 
 /**
  * Twitter_Snowflake<br>
@@ -196,10 +196,11 @@ public class SnowflakeUtil {
 //        System.out.println(ip);
 
         Map<Long, String> map = Maps.newHashMap();
-        int count = 0;
+        int count = 1000000;
+        count = 100;
         SnowflakeUtil snowflakeUtil = SnowflakeUtil.getInstance();
-        for (int i = 0; i < 1000000; i++) {
-            System.out.println(snowflakeUtil.nextId());
+        for (int i = 0; i < count; i++) {
+            System.out.println(i + " = " + snowflakeUtil.nextId());
         }
 //        for (int idex = 0; idex < 1100; idex++) {
 //            map.put(snowflakeUtil.nextId(), "1");
