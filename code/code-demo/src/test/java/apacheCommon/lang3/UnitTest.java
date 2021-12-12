@@ -2,6 +2,7 @@ package apacheCommon.lang3;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.SystemUtils;
 import org.junit.jupiter.api.*;
 
 import java.util.UUID;
@@ -43,14 +44,30 @@ public class UnitTest {
 
     @Test
     @RepeatedTest(10)
-    void t2(){
+    void t2() {
         String s = RandomStringUtils.randomAlphanumeric(16);
         System.out.println(s);
     }
 
     @Test
-    void t3(){
+    void t3() {
         System.out.println(UUID.randomUUID().toString().replace("-", ""));
         System.out.println(UUID.randomUUID().toString().replace("-", "").length());
+    }
+
+    @Test
+    void t4() {
+        System.out.println(SystemUtils.getHostName());
+        System.out.println(SystemUtils.getJavaHome());
+        System.out.println(SystemUtils.getUserDir());
+        System.out.println(SystemUtils.getUserHome());
+        System.out.println();
+
+        System.out.println(SystemUtils.IS_OS_WINDOWS);
+        System.out.println(SystemUtils.IS_OS_LINUX);
+        System.out.println();
+
+        System.out.println(SystemUtils.IS_JAVA_1_8);
+
     }
 }
