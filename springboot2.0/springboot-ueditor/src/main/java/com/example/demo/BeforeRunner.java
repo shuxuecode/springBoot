@@ -8,7 +8,6 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 /**
- * @author zhaoshuxue3
  * @Date 2019/6/21 18:36
  **/
 @Component

@@ -16,7 +16,6 @@ import java.util.concurrent.TimeUnit;
 import java.util.stream.IntStream;
 
 /**
- * @author zhaoshuxue3
  * @Date 2019/4/9 20:11
  **/
 @RestController

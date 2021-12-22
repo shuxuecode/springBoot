@@ -12,7 +12,6 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import java.util.List;
 
 /**
- * @author zhaoshuxue3
  * @Date 2019/7/24 18:26
  **/
 @RunWith(SpringRunner.class)

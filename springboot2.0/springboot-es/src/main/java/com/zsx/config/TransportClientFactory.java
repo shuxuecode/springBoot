@@ -15,7 +15,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author zhaoshuxue3
  * @Date 2019/5/31 11:36
  **/
 public class TransportClientFactory extends AbstractFactoryBean<Client> {

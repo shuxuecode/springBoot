@@ -6,7 +6,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 /**
- * @author zhaoshuxue3
  * @Date 2019/4/9 19:34
  **/
 @Component

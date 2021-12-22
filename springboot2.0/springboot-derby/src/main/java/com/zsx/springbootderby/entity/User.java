@@ -3,7 +3,6 @@ package com.zsx.springbootderby.entity;
 import java.io.Serializable;
 
 /**
- * @author zhaoshuxue3
  * @Date 2019/7/30 15:31
  **/
 public class User implements Serializable {

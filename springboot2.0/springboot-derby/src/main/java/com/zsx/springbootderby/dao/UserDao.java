@@ -7,7 +7,6 @@ import org.springframework.jdbc.BadSqlGrammarException;
 import java.util.List;
 
 /**
- * @author zhaoshuxue3
  * @Date 2019/7/30 15:32
  **/
 @Mapper

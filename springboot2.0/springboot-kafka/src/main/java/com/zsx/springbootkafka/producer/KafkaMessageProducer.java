@@ -12,7 +12,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.concurrent.ListenableFuture;
 
 /**
- * @author zhaoshuxue3
  * @Date 2019/7/29 16:30
  **/
 @Component

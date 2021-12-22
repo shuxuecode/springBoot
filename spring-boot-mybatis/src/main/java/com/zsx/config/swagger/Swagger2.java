@@ -33,7 +33,7 @@ public class Swagger2 {
 		return new ApiInfoBuilder()
 				.title("Spring Boot中使用Swagger2构建RESTful APIs")
 				.description("描述")
-				.termsOfServiceUrl("https://www.zhaoshuxue.top")
+				.termsOfServiceUrl("https://www..top")
 				.version("3.1.2")
 				.build();
 	}

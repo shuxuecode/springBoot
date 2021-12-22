@@ -9,7 +9,6 @@ import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 
 /**
- * @author zhaoshuxue3
  * @Date 2019/7/29 16:38
  **/
 @Component

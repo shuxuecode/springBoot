@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.UUID;
 
 /**
- * @author zhaoshuxue3
  * @Date 2019/4/9 18:21
  **/
 @RestController

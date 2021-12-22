@@ -20,7 +20,6 @@ import java.util.stream.IntStream;
 /**
  * 模拟秒杀
  *
- * @author zhaoshuxue3
  * @Date 2019/4/9 18:30
  **/
 @RunWith(SpringRunner.class)

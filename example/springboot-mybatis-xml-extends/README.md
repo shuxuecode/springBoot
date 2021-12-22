@@ -281,7 +281,7 @@ public interface UserMapper extends BaseDao<User>{
 
 具体代码可以去github上clone，地址为：
 
-https://github.com/zhaoshuxue/springBoot/tree/master/example/springboot-mybatis-xml-extends
+https://github.com/shuxuecode/springBoot/tree/master/example/springboot-mybatis-xml-extends
 
 
 

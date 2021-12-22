@@ -18,7 +18,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import java.util.UUID;
 
 /**
- * @author zhaoshuxue3
  * @Date 2019/5/30 18:47
  **/
 //@Service
