@@ -197,7 +197,7 @@ public class SnowflakeUtil {
 
         Map<Long, String> map = Maps.newHashMap();
         int count = 1000000;
-        count = 100;
+        count = 10;
         SnowflakeUtil snowflakeUtil = SnowflakeUtil.getInstance();
         for (int i = 0; i < count; i++) {
             System.out.println(i + " = " + snowflakeUtil.nextId());

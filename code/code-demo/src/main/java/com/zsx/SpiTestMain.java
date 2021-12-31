@@ -24,13 +24,15 @@ public class SpiTestMain {
 
         ServiceLoader<SpiDemo> serviceLoader = ServiceLoader.load(SpiDemo.class);
         System.out.println(serviceLoader.toString());
-        Iterator<SpiDemo> iterator = serviceLoader.iterator();
-        while (iterator.hasNext()) {
-            System.out.println(1);
-            // 加载并初始化实现类
-            SpiDemo spiDemo = iterator.next();
-            spiDemo.test();
-        }
+        //Iterator<SpiDemo> iterator = serviceLoader.iterator();
+        //while (iterator.hasNext()) {
+        //    System.out.println(1);
+        //    // 加载并初始化实现类
+        //    SpiDemo spiDemo = iterator.next();
+        //    spiDemo.test();
+        //}
+
+        serviceLoader.forEach(item -> item.test());
 
     }
 }
