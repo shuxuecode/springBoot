@@ -5,6 +5,7 @@ import cn.hutool.crypto.asymmetric.KeyType;
 import cn.hutool.crypto.asymmetric.RSA;
 import com.alibaba.fastjson.JSON;
 import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
@@ -16,6 +17,7 @@ import java.math.RoundingMode;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.HashSet;
 
@@ -24,6 +26,27 @@ import java.util.HashSet;
  */
 public class Test002 {
 
+
+    //return ;
+
+
+    @Test void t10(){
+        System.out.println(new BigDecimal("9.9").multiply(new BigDecimal(100)).intValue());
+        System.out.println(new BigDecimal("9.95").multiply(new BigDecimal(100)).intValue());
+        System.out.println(new BigDecimal("10").multiply(new BigDecimal(100)).intValue());
+        System.out.println(new BigDecimal("10.01").multiply(new BigDecimal(100)).intValue());
+        System.out.println(new BigDecimal("222").multiply(new BigDecimal(100)).intValue());
+    }
+    @Test void t9(){
+        DateTime dateTime = DateTime.parse("2000-01-01 00:00:00", DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss"));
+
+        long millis = dateTime.getMillis();
+
+        System.out.println(millis);
+
+        System.out.println(new Date(millis));
+
+    }
     @Test void t8(){
 
         HashSet<String> set = new HashSet<>();
