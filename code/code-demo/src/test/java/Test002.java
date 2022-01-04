@@ -17,6 +17,7 @@ import java.math.RoundingMode;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.HashSet;
@@ -30,6 +31,16 @@ public class Test002 {
     //return ;
 
 
+    @Test void t11(){
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
+        LocalDateTime time1 = LocalDateTime.parse("2020-12-12 12:00:01", dateTimeFormatter);
+        LocalDateTime time2 = LocalDateTime.parse("2020-12-12 12:00:00", dateTimeFormatter);
+
+        System.out.println(time1.isAfter(time2));
+        System.out.println(time1.isBefore(time2));
+
+    }
     @Test void t10(){
         System.out.println(new BigDecimal("9.9").multiply(new BigDecimal(100)).intValue());
         System.out.println(new BigDecimal("9.95").multiply(new BigDecimal(100)).intValue());
