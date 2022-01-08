@@ -37,8 +37,14 @@ public class Test002 {
         LocalDateTime time1 = LocalDateTime.parse("2020-12-12 12:00:01", dateTimeFormatter);
         LocalDateTime time2 = LocalDateTime.parse("2020-12-12 12:00:00", dateTimeFormatter);
 
-        System.out.println(time1.isAfter(time2));
-        System.out.println(time1.isBefore(time2));
+        //System.out.println(time1.isAfter(time2));
+        //System.out.println(time1.isBefore(time2));
+
+        DateTime now = DateTime.now();
+        DateTime dateTime = now.minuteOfHour().addToCopy(-50);
+
+        System.out.println(now);
+        System.out.println(dateTime);
 
     }
     @Test void t10(){
