@@ -21,6 +21,7 @@ public class Test1 {
     @Test
     void t1() {
         System.out.println(8899);
-        demoService.test("8899");
+        String success = demoService.test("8899", "success");
+        System.out.println(success);
     }
 }
