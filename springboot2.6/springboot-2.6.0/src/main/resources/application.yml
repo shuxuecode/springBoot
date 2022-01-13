@@ -2,9 +2,9 @@
 
 
 
-spring:
-  profile:
-    active: dev
+#spring:
+#  profile:
+#    active: dev
 
 
 

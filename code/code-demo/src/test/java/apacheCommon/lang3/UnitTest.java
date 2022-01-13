@@ -1,11 +1,14 @@
 package apacheCommon.lang3;
 
+import com.google.common.collect.Maps;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.SystemUtils;
 import org.junit.jupiter.api.*;
 
+import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.ConcurrentMap;
 
 /**
  * @author zsx
@@ -69,5 +72,11 @@ public class UnitTest {
 
         System.out.println(SystemUtils.IS_JAVA_1_8);
 
+    }
+    @Test
+    void t5() {
+        Map<String, Map<String, String>> map = Maps.newConcurrentMap();
+
+        System.out.println(map.get(null)); // 报 java.lang.NullPointerException
     }
 }
