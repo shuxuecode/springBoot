@@ -31,6 +31,11 @@ public class Test002 {
     //return ;
 
 
+    @Test void t12(){
+        Long num = new Long("19");
+        System.out.println(num == 0);
+        System.out.println(num.longValue() == 0);
+    }
     @Test void t11(){
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
