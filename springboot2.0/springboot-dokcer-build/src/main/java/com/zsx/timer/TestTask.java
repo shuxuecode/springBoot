@@ -10,7 +10,8 @@ import java.util.Random;
 /**
  * @date 2022/1/24
  */
-@Component
+//@Component
+// todo
 public class TestTask {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TestTask.class);
