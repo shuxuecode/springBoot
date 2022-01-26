@@ -16,7 +16,7 @@ public class DemoController {
     private DemoService demoService;
 
     @Autowired
-    //@Qualifier("")
+    //@Qualifier("DemoServiceBbb")
     private DemoService DemoServiceBbb;
 
     @GetMapping("get")

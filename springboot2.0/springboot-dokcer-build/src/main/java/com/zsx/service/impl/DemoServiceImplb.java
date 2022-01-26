@@ -7,9 +7,9 @@ import org.springframework.stereotype.Service;
 /**
  * @date 2022/1/25
  */
+//@Service
 @Service("DemoServiceBbb")
 public class DemoServiceImplb implements DemoService {
-
 
 
     @Override

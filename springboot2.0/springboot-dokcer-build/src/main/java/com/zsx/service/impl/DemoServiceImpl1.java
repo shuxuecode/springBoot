@@ -2,11 +2,14 @@ package com.zsx.service.impl;
 
 import com.zsx.config.DemoAnno;
 import com.zsx.service.DemoService;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 /**
  * @date 2022/1/25
  */
+//@Service
+//@Primary
 @Service(value = "demoService")
 public class DemoServiceImpl1 implements DemoService {
 
