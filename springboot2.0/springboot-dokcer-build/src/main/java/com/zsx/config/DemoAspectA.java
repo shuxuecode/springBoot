@@ -50,6 +50,7 @@ public class DemoAspectA {
             paramTypes = new Class[length];
             for (int i = 0; i < length; i++) {
                 paramTypes[i] = args[i].getClass();
+                System.out.println(args[i].getClass().getTypeName());
             }
         }
 
@@ -66,12 +67,44 @@ public class DemoAspectA {
         }
 
         if (demoService != null) {
+
+
+            // 下面这种方式主要解决 参数是基本数据类型的 问题， 不使用上面的参数类型，而是找到所有的方法，匹配方法名和参数个数
+            Method[] methods = ReflectionUtils.getAllDeclaredMethods(demoService.getClass());
+            //Method[] methods = demoService.getClass().getMethods();
+            //Method[] methods = demoService.getClass().getDeclaredMethods();
+
+            Method get = null;
+
+            for (Method method1 : methods) {
+            //    System.out.println("demoService 的 方法 " + method1.getName());
+            //    Class<?>[] parameterTypes = method1.getParameterTypes();
+            //    for (Class<?> parameterType : parameterTypes) {
+            //        System.out.println(parameterType.getTypeName());
+            //    }
+            //
+            //    System.out.println(1111);
+                String name = method1.getName();
+                if (methodName.equals(name)){
+                    if (args != null && method1.getParameterTypes() != null && args.length == method1.getParameterTypes().length) {
+                        get = method1;
+                    }
+                }
+            }
+
+
             // 找到方法
-            Method get = ReflectionUtils.findMethod(demoService.getClass(), methodName, paramTypes);
+            //Method get = ReflectionUtils.findMethod(demoService.getClass(), methodName, paramTypes);
+
+
+            //if ("setex".equals(methodName)) {
+            //    paramTypes = new Class[]{java.lang.String.class, int.class, String.class};
+            //}
+
+            //Method get = demoService.getClass().getMethod(methodName, paramTypes);
             // 执行方法
             ReflectionUtils.invokeMethod(get, demoService, args);
         }
-
 
 
         return proceed;

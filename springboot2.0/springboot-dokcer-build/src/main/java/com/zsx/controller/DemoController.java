@@ -28,6 +28,8 @@ public class DemoController {
 
         DemoServiceBbb.get();
 
+        demoService.setex("a", 2, "a");
+
         return null;
 
     }

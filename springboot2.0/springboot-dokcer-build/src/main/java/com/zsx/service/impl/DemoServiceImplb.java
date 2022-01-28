@@ -28,4 +28,16 @@ public class DemoServiceImplb implements DemoService {
 
         return "return " + key + "=" + value;
     }
+
+    @Override
+    @DemoAnno("bbb")
+    public String setex(String key, int time, String value) {
+        System.out.println("执行了  DemoServiceImplb setex key = " + key + "  value = " + value);
+        return "return " + key + "=" + value;
+    }
+    @Override
+    public String setex(String key, int time, String value, long seconds) {
+        System.out.println("执行了  DemoServiceImplb setex key = " + key + " long value = " + value);
+        return "return " + key + "=" + value;
+    }
 }
