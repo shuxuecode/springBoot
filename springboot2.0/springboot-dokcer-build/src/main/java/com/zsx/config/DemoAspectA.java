@@ -7,6 +7,8 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ReflectionUtils;
@@ -27,6 +29,10 @@ public class DemoAspectA {
     @Pointcut("execution(* com.zsx.service.impl.DemoServiceImpl1.*(..))")
     public void pointCut() {
     }
+
+    @Autowired
+    @Qualifier("DemoServiceBbb")
+    private DemoService demoService;
 
     @Around(value = "pointCut()")
     public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
@@ -59,12 +65,12 @@ public class DemoAspectA {
         String annotationValue = annotation.value();
         System.out.println(annotationValue);
 
-        DemoService demoService = null;
-        if ("aaa".equals(annotationValue)) {
-            demoService = SpringBeanUtils.getBean("DemoServiceBbb", DemoService.class);
-        } else if ("bbb".equals(annotationValue)) {
-            demoService = SpringBeanUtils.getBean("demoService", DemoService.class);
-        }
+        //DemoService demoService = null;
+        //if ("aaa".equals(annotationValue)) {
+        //    demoService = SpringBeanUtils.getBean("DemoServiceBbb", DemoService.class);
+        //} else if ("bbb".equals(annotationValue)) {
+        //    demoService = SpringBeanUtils.getBean("demoService", DemoService.class);
+        //}
 
         if (demoService != null) {
 
