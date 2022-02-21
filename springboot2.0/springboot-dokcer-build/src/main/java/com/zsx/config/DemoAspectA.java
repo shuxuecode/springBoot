@@ -88,8 +88,7 @@ public class DemoAspectA {
             //    for (Class<?> parameterType : parameterTypes) {
             //        System.out.println(parameterType.getTypeName());
             //    }
-            //
-            //    System.out.println(1111);
+
                 String name = method1.getName();
                 if (methodName.equals(name)){
                     if (args != null && method1.getParameterTypes() != null && args.length == method1.getParameterTypes().length) {
@@ -101,11 +100,6 @@ public class DemoAspectA {
 
             // 找到方法
             //Method get = ReflectionUtils.findMethod(demoService.getClass(), methodName, paramTypes);
-
-
-            //if ("setex".equals(methodName)) {
-            //    paramTypes = new Class[]{java.lang.String.class, int.class, String.class};
-            //}
 
             //Method get = demoService.getClass().getMethod(methodName, paramTypes);
             // 执行方法
