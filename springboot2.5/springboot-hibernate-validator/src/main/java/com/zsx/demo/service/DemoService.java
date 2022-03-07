@@ -18,7 +18,6 @@ public class DemoService<R extends String, V extends String> {
 
     public V test(R str, V res){
 
-        System.out.println(8899);
         System.out.println(JSON.toJSONString(map, true));
         System.out.println(map.get("demoAaaTest"));
 
