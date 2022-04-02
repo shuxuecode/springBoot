@@ -1,13 +1,13 @@
-package com.example.springboot270;
+package com.example.springboot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Springboot270Application {
+public class App {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Springboot270Application.class, args);
+		SpringApplication.run(App.class, args);
 	}
 
 }
