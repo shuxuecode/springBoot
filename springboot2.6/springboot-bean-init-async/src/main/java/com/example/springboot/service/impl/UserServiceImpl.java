@@ -15,7 +15,7 @@ public class UserServiceImpl implements UserService, InitializingBean {
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        TimeUnit.SECONDS.sleep(1);
+        TimeUnit.SECONDS.sleep(10);
     }
 
     @Override

@@ -5,7 +5,7 @@ import com.example.springboot.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class UserServiceFactoryBean implements FactoryBean {
     @Override
     public Object getObject() throws Exception {
