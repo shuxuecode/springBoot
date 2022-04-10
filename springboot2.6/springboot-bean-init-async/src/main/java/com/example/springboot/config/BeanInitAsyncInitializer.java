@@ -15,7 +15,7 @@ public class BeanInitAsyncInitializer implements ApplicationContextInitializer<C
     public void initialize(ConfigurableApplicationContext applicationContext) {
         if (applicationContext instanceof GenericApplicationContext) {
             System.out.println("BeanInitAsyncInitializer run");
-            BeanInitAsyncApplicationListener.attach((GenericApplicationContext) applicationContext);
+            //BeanInitAsyncApplicationListener.attach((GenericApplicationContext) applicationContext);
         }
     }
 
