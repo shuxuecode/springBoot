@@ -11,7 +11,9 @@ import org.springframework.core.Ordered;
 import org.springframework.core.PriorityOrdered;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -25,7 +27,7 @@ public class StartBeanInitAnalyzeProcessor implements BeanPostProcessor, Priorit
     private static Logger logger = LoggerFactory.getLogger(StartBeanInitAnalyzeProcessor.class);
 
     private Map<String, Long> beanMap = new HashMap<>();
-
+    private Map<String, BeanInfo> beanInfoMap = new HashMap<>();
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
@@ -42,6 +44,10 @@ public class StartBeanInitAnalyzeProcessor implements BeanPostProcessor, Priorit
         logger.info("before beanName={}", beanName);
 
         beanMap.put(beanName, System.currentTimeMillis());
+
+
+        beanInfoMap.put(beanName, new BeanInfo(beanName, System.currentTimeMillis()));
+
         return bean;
     }
 
@@ -53,6 +59,9 @@ public class StartBeanInitAnalyzeProcessor implements BeanPostProcessor, Priorit
 
         beanMap.put(beanName, System.currentTimeMillis() - startTime);
 
+        BeanInfo beanInfo = beanInfoMap.get(beanName);
+        beanInfo.setCostTime(System.currentTimeMillis() - beanInfo.getCostTime());
+        beanInfoMap.put(beanName, beanInfo);
 
         return bean;
     }
@@ -60,5 +69,36 @@ public class StartBeanInitAnalyzeProcessor implements BeanPostProcessor, Priorit
 
     public Map<String, Long> getBeanMap() {
         return beanMap;
+    }
+
+    public Map<String, BeanInfo> getBeanInfoMap() {
+        return beanInfoMap;
+    }
+
+
+    class BeanInfo {
+        private String beanName;
+        private long costTime;
+
+        public BeanInfo(String beanName, long costTime) {
+            this.beanName = beanName;
+            this.costTime = costTime;
+        }
+
+        public String getBeanName() {
+            return beanName;
+        }
+
+        //public void setBeanName(String beanName) {
+        //    this.beanName = beanName;
+        //}
+
+        public long getCostTime() {
+            return costTime;
+        }
+
+        public void setCostTime(long costTime) {
+            this.costTime = costTime;
+        }
     }
 }
