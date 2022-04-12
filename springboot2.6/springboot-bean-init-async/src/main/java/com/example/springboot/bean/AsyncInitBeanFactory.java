@@ -48,12 +48,17 @@ public class AsyncInitBeanFactory extends DefaultListableBeanFactory {
     public void initBean() {
         for (Future future : FUTURES) {
             try {
-                future.get();
+                //future.get();
+                future.get(5L, TimeUnit.SECONDS);
             } catch (InterruptedException e) {
                 e.printStackTrace();
                 shutdown();
                 throw new RuntimeException(e);
             } catch (ExecutionException e) {
+                e.printStackTrace();
+                shutdown();
+                throw new RuntimeException(e);
+            } catch (TimeoutException e) {
                 e.printStackTrace();
                 shutdown();
                 throw new RuntimeException(e);
