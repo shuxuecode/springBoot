@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.concurrent.*;
 
 /**
- * @author shuxuezhao
+ * @author
  * @date 2022/4/6
  */
 public class AsyncInitBeanFactory extends DefaultListableBeanFactory {
@@ -48,8 +48,8 @@ public class AsyncInitBeanFactory extends DefaultListableBeanFactory {
     public void initBean() {
         for (Future future : FUTURES) {
             try {
-                //future.get();
-                future.get(5L, TimeUnit.SECONDS);
+                future.get();
+                //future.get(5L, TimeUnit.SECONDS);
             } catch (InterruptedException e) {
                 e.printStackTrace();
                 shutdown();
@@ -58,10 +58,10 @@ public class AsyncInitBeanFactory extends DefaultListableBeanFactory {
                 e.printStackTrace();
                 shutdown();
                 throw new RuntimeException(e);
-            } catch (TimeoutException e) {
-                e.printStackTrace();
-                shutdown();
-                throw new RuntimeException(e);
+            //} catch (TimeoutException e) {
+            //    e.printStackTrace();
+            //    shutdown();
+            //    throw new RuntimeException(e);
             }
         }
     }
