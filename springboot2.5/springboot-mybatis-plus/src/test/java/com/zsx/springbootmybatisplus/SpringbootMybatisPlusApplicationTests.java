@@ -15,6 +15,7 @@ import com.zsx.springbootmybatisplus.entity.TUser;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.support.TransactionTemplate;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
@@ -22,6 +23,10 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalField;
 import java.util.*;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 @SpringBootTest
 class SpringbootMybatisPlusApplicationTests {
@@ -29,6 +34,48 @@ class SpringbootMybatisPlusApplicationTests {
     @Autowired
     UserDao userDao;
 
+    @Autowired
+    TransactionTemplate transactionTemplate;
+
+    @Test
+    void t10() throws InterruptedException {
+
+        ExecutorService executorService = Executors.newFixedThreadPool(8);
+
+        executorService.submit(() -> {
+            String result = "";
+            transactionTemplate.execute(status -> {
+                TUser user = userDao.lock("123");
+                System.out.println("1 = " + LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss:SSS")));
+                sleep(2);
+
+                return result;
+            });
+        });
+
+        executorService.submit(() -> {
+            String result = "";
+            transactionTemplate.execute(status -> {
+                TUser user = userDao.lock("123");
+                System.out.println("2 = " + LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss:SSS")));
+                sleep(2);
+
+                return result;
+            });
+        });
+
+        executorService.shutdown();
+
+        TimeUnit.SECONDS.sleep(8);
+    }
+
+    private void sleep(int second){
+        try {
+            TimeUnit.SECONDS.sleep(second);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     // 链式查询方式
     @Test
