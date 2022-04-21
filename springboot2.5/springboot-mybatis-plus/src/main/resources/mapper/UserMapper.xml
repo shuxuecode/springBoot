@@ -26,6 +26,8 @@
     <select id="lock" resultMap="m_b">
         select *
         from x_user
-        where username = #{username} for update
+        where username = #{username}
+        and password = 'a'
+        for update
     </select>
 </mapper>

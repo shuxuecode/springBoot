@@ -57,6 +57,7 @@ class SpringbootMybatisPlusApplicationTests {
             String result = "";
             transactionTemplate.execute(status -> {
                 TUser user = userDao.lock("123");
+                //userDao.lock("222");
                 System.out.println("2 = " + LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss:SSS")));
                 sleep(2);
 
