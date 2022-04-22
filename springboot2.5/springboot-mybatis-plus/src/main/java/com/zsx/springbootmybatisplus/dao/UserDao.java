@@ -11,5 +11,7 @@ public interface UserDao extends BaseMapper<TUser> {
     List<TUser> testGet();
 
     TUser lock(String username);
+
+    int updatePassword(TUser user);
 }
 

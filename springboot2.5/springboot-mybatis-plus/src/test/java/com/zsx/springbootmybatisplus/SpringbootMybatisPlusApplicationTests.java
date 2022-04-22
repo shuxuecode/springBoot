@@ -1,5 +1,7 @@
 package com.zsx.springbootmybatisplus;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
@@ -46,8 +48,17 @@ class SpringbootMybatisPlusApplicationTests {
             String result = "";
             transactionTemplate.execute(status -> {
                 TUser user = userDao.lock("123");
+
+                TUser tUser = JSONObject.parseObject(JSON.toJSONString(user), TUser.class);
+                tUser.setPassword("aaa");
+                userDao.updatePassword(tUser);
+
                 System.out.println("1 = " + LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss:SSS")));
                 sleep(2);
+
+                userDao.insert(tUser);
+
+                //transactionTemplate.getTransactionManager().commit(status);
 
                 return result;
             });
@@ -58,8 +69,19 @@ class SpringbootMybatisPlusApplicationTests {
             transactionTemplate.execute(status -> {
                 TUser user = userDao.lock("123");
                 //userDao.lock("222");
+
+                TUser tUser = JSONObject.parseObject(JSON.toJSONString(user), TUser.class);
+                tUser.setPassword("bbb");
+                userDao.updatePassword(tUser);
+
                 System.out.println("2 = " + LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss:SSS")));
                 sleep(2);
+
+                //transactionTemplate.getTransactionManager().commit(status);
+
+                //status.setRollbackOnly();
+
+                userDao.insert(tUser);
 
                 return result;
             });

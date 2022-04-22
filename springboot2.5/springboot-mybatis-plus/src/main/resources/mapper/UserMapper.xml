@@ -27,7 +27,11 @@
         select *
         from x_user
         where username = #{username}
-        and password = 'a'
+<!--        and password = 'a'-->
         for update
     </select>
+
+    <update id="updatePassword" parameterType="com.zsx.springbootmybatisplus.entity.TUser">
+        update x_user set password = #{password} , update_time = now() where id = #{id}
+    </update>
 </mapper>
