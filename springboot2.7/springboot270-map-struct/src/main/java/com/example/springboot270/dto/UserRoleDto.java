@@ -14,4 +14,6 @@ public class UserRoleDto {
 
     private String roleName;
 
+    private String roleType;
+
 }

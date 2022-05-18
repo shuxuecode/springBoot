@@ -35,11 +35,13 @@ public interface UserMapper {
      */
     @Mapping(source = "user.name", target = "userName")
     @Mapping(source = "role.roleName", target = "roleName")
+    @Mapping(source = "role.type", target = "roleType", defaultValue = "默认值")
     UserRoleDto getUserRoleDto(User user, Role role);
 
 
     @Mapping(source = "user.name", target = "userName")
     // 直接引用一个source参数映射到target对象
     @Mapping(source = "date", target = "birthday")
+
     UserDto userToUserDto(User user, Date date);
 }

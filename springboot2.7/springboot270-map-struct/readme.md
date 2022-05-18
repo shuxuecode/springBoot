@@ -22,3 +22,71 @@ MapStruct是一个Java注释处理器，用于生成类型安全的bean映射类
 2. 编译时类型安全性 : 只能映射彼此的对象和属性，不会将商品实体意外映射到用户DTO等
 
 
+
+## pom依赖
+
+
+## 使用方法
+
+如果不指定@Mapping，默认映射name相同的field
+如果映射的对象field name不一样，通过 @Mapping 指定。
+忽略字段加@Mapping#ignore() = true
+
+### 指定默认值
+
+@Mapping(target = "describe", source = "describe", defaultValue = "默认值")
+
+
+### 使用表达式
+
+@Mapping(target = "createTime",expression = "java(new java.util.Date())")
+
+**注意**： 这个属性不能与source()、defaultValue()、defaultExpression()、qualifiedBy()、qualifiedByName()或constant()一起使用。
+
+
+### 时间格式化
+
+@Mapping(target = "createTime" ,source = "createTime", dateFormat = "yyyy-MM-dd")
+
+如果属性从字符串映射到日期，则该格式字符串可由SimpleDateFormat处理，反之亦然。当映射枚举常量时，将忽略所有其他属性类型。
+
+### 嵌套映射
+
+```java
+@Data
+public class Person {
+	...
+	private Child personChild;
+	...
+}
+@Data
+public class PersonDTO {
+	...
+    private Child child;
+    ...
+}
+// mapper
+@Mapper(uses =DateFormtUtil.class)
+public interface PersonMapper {
+
+    PersonMapper INSTANCT = Mappers.getMapper(PersonMapper.class);
+
+    @Mapping(target = "child", source = "personChild")
+    PersonDTO conver(Person person);
+
+}
+```
+
+### numberFormat
+
+如果带注释的方法从数字映射到字符串，则使用DecimalFormat将格式字符串作为可处理的格式。反之亦然。对于所有其他元素类型，将被忽略。
+从基本2.1 基本映射可以看出，number类型与字符串直接的转换是通过valueOf()，如果字符串格式不正确会抛出java.lang.NumberFormatException异常,例如：Integer.valueOf(“10.2”)
+
+使用numberFormat()之后DecimalFormat格式转换，还是会抛出NFE异常
+
+@Mapping(target = "age",source = "age", numberFormat = "#0.00")
+
+
+
+
+
