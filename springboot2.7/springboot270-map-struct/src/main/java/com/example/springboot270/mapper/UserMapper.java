@@ -4,6 +4,7 @@ import com.example.springboot270.dto.UserDto;
 import com.example.springboot270.dto.UserRoleDto;
 import com.example.springboot270.entity.Role;
 import com.example.springboot270.entity.User;
+import com.example.springboot270.util.DateUtil;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
@@ -13,7 +14,7 @@ import java.util.Date;
 /**
  * @date 2022/5/17
  */
-@Mapper
+@Mapper(uses = DateUtil.class)
 public interface UserMapper {
 
     UserMapper INSTANCE = Mappers.getMapper(UserMapper.class);
