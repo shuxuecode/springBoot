@@ -2,6 +2,9 @@ package poiDemo;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import org.apache.poi.hssf.usermodel.*;
+import org.apache.poi.hssf.util.HSSFColor;
+import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.xssf.streaming.SXSSFCell;
 import org.apache.poi.xssf.streaming.SXSSFRow;
@@ -40,6 +43,7 @@ public class ExcelUtilTest {
 //        定义在外部，使对象持有一个引用，每当新创建一个对象时候原来引用失效jvm会自动回收
         SXSSFRow row = null;
         SXSSFCell cell = null;
+
 
         for (int i = 0; i < total; i++) {
             Map<String, String> map = data.get(i);
@@ -82,5 +86,32 @@ public class ExcelUtilTest {
         }
     }
 
+    private void test() {
+        HSSFWorkbook workbook = new HSSFWorkbook();
+        HSSFPalette customPalette = workbook.getCustomPalette();
+
+        byte a = (byte) 1;
+
+        HSSFColor hssfColor = customPalette.addColor(a, a, a);
+
+        HSSFSheet sheet = workbook.createSheet("test");
+
+        HSSFRow row = sheet.createRow(0);
+
+        HSSFCell cell = row.createCell(0);
+
+        HSSFCellStyle hssfCellStyle = cell.getCellStyle();
+
+        hssfCellStyle.setFillBackgroundColor(hssfColor.getIndex());
+        HSSFFont hssfFont = workbook.createFont();
+        hssfFont.setColor(hssfColor.getIndex());
+        hssfCellStyle.setFont(hssfFont);
+
+        HSSFCellStyle cellStyle = cell.getCellStyle();
+
+        cellStyle.setFillBackgroundColor(hssfColor.getIndex());
+
+
+    }
 
 }
