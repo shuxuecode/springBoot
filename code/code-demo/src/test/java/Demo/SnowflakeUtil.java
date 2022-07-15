@@ -14,7 +14,10 @@ package Demo;
  */
 
 import com.google.common.collect.Maps;
+import org.joda.time.LocalDateTime;
+import org.junit.Test;
 
+import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.Map;
 import java.util.Random;
@@ -28,7 +31,11 @@ public class SnowflakeUtil {
     /**
      * 开始时间截 (2015-01-01)
      */
-    private final long twepoch = 1288834974657L;
+    //private final long twepoch = 1288834974657L;
+    private final long twepoch = 0L;
+    //private final long twepoch = System.currentTimeMillis();
+    //private final long twepoch = new LocalDateTime(2000, 1,1,0,0,0,0).toDate().getTime();
+    //private final long twepoch = new LocalDateTime(2014, 12,25,0,31,0,0).toDate().getTime();
 
     /**
      * 机器id所占的位数
@@ -97,7 +104,7 @@ public class SnowflakeUtil {
 
     private static SnowflakeUtil snowflakeUtil;
 
-    private SnowflakeUtil() {
+    public SnowflakeUtil() {
     }
 
     public static synchronized SnowflakeUtil getInstance() {
@@ -190,17 +197,25 @@ public class SnowflakeUtil {
      * 测试
      */
     public static void main(String[] args) throws UnknownHostException {
-//        String str = InetAddress.getLocalHost().getHostAddress();
-//        System.out.println(str);
-//        long ip = ipToLong(InetAddress.getLocalHost().getHostAddress());
-//        System.out.println(ip);
+
+        System.out.println(System.currentTimeMillis());
+        //LocalDateTime now = LocalDateTime.now();
+        //now = now.withYear(2020);
+        //now = now.withMonthOfYear(1);
+        //now = now.withDayOfMonth(1);
+        ////now = now.withHourOfDay(0);
+        //now = now.withMillisOfDay(0);
+        //System.out.println(now);
+        //System.out.println(now.toDate().getTime());
+
 
         Map<Long, String> map = Maps.newHashMap();
         int count = 1000000;
         count = 10;
         SnowflakeUtil snowflakeUtil = SnowflakeUtil.getInstance();
         for (int i = 0; i < count; i++) {
-            System.out.println(i + " = " + snowflakeUtil.nextId());
+            long nextId = snowflakeUtil.nextId();
+            System.out.println(i + " = " + nextId + " len= " + String.valueOf(nextId).length());
         }
 //        for (int idex = 0; idex < 1100; idex++) {
 //            map.put(snowflakeUtil.nextId(), "1");
@@ -231,4 +246,24 @@ public class SnowflakeUtil {
         return num;
     }
 
+    @Test
+    public void t1() throws UnknownHostException {
+        long l = ipToLong("1.1.1.1");
+        System.out.println(l);
+
+        String str = InetAddress.getLocalHost().getHostAddress();
+        System.out.println(str);
+        long ip = ipToLong(InetAddress.getLocalHost().getHostAddress());
+        System.out.println(ip);
+    }
+
+    @Test
+    public void t2(){
+        long res = -1L ^ (-1L << 5);
+        System.out.println(res);
+        System.out.println(snowflakeUtil);
+        System.out.println(new SnowflakeUtil().maxDatacenterId);
+
+        System.out.println(new LocalDateTime(2015, 1,1,0,0,0,0).toDate().getTime());
+    }
 }
