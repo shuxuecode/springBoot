@@ -1,0 +1,9 @@
+
+spring:
+  config:
+    import: optional:classpath:/.env[.properties]
+
+
+test:
+  username: ${USERNAME}
+  password: ${PASSWORD}
