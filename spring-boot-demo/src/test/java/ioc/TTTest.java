@@ -9,8 +9,11 @@ public class TTTest {
 		Object newInstance = newInstance("ioc.Cat");
 		
 		System.out.println(newInstance.getClass());
-		
-		
+
+		Cat cat = (Cat) newInstance;
+		System.out.println(cat);
+		cat.setName("abc");
+		cat.say();
 
 	}
 
