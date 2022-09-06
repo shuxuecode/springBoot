@@ -35,6 +35,13 @@ public class 单元测试 {
         System.out.println("**************************************************************");
         System.out.println("单元测试计时统计：" + sw.prettyPrint());
         System.out.println("**************************************************************");
+
+        System.out.println("sw.getTotalTimeMillis() : " + sw.getTotalTimeMillis());
+
+        StopWatch.TaskInfo[] taskInfos = sw.getTaskInfo();
+        for (StopWatch.TaskInfo taskInfo : taskInfos) {
+            System.out.println(taskInfo.getTaskName() + " 消耗了毫秒 : " + taskInfo.getTimeMillis());
+        }
     }
 
     @Before
@@ -50,14 +57,20 @@ public class 单元测试 {
 
 
     /**
-     @Ignore	忽略测试方法
-     @Test	执行单元测试的方法
+     * @Ignore 忽略测试方法
+     * @Test 执行单元测试的方法
      */
-    @Ignore
+    //@Ignore
     @Test
     public void testtest() throws InterruptedException {
         sw.start("休眠1秒");
         Thread.sleep(1000L);
         System.out.println(1);
+        sw.stop();
+
+        sw.start("22222");
+        sw.stop();
+
+        sw.start("33333");
     }
 }
