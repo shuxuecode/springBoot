@@ -1,0 +1,14 @@
+
+
+
+
+#spring:
+#  profile:
+#    active: dev
+
+
+scheduling:
+  cron: 0/10 * * * * ?
+
+
+# todo zsx
