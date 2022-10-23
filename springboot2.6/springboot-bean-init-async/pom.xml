@@ -40,6 +40,14 @@
 			<scope>test</scope>
 		</dependency>
 
+<!--		<dependency>-->
+<!--			<groupId>org.springframework.boot</groupId>-->
+<!--			<artifactId>spring-boot</artifactId>-->
+<!--			<version>1.5.22.RELEASE</version>-->
+<!--&lt;!&ndash;			// todo zsx&ndash;&gt;-->
+<!--&lt;!&ndash;			<version>2.6.6</version>&ndash;&gt;-->
+<!--		</dependency>-->
+
 
 	</dependencies>
 
