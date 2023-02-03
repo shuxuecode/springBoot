@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
  *
  * @date 2022/7/20
  */
-@Component
+//@Component
 public class MsgListenter {
 
     @EventListener(TestEvent.class)
