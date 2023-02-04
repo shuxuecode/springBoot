@@ -41,7 +41,9 @@ class SpringbootSpringEventApplicationTests {
         for (int i = 0; i < 10; i++) {
             final int num = i;
             CompletableFuture.runAsync(() -> {
+                long start = System.currentTimeMillis();
                 testServiceAsync.publish("->" + num);
+                System.out.println("publish 耗时: " + (System.currentTimeMillis() - start));
             });
         }
 

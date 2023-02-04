@@ -7,6 +7,7 @@ import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.core.task.TaskExecutor;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
+import java.util.concurrent.RejectedExecutionHandler;
 import java.util.concurrent.ThreadPoolExecutor;
 
 /**
@@ -33,6 +34,15 @@ public class EventConfig {
         executor.setThreadNamePrefix("eventThread-");
         //executor.setRejectedExecutionHandler(new ThreadPoolExecutor.DiscardPolicy());
         executor.setRejectedExecutionHandler(new ThreadPoolExecutor.AbortPolicy());
+        executor.setRejectedExecutionHandler(new RejectedExecutionHandler() {
+            @Override
+            public void rejectedExecution(Runnable r, ThreadPoolExecutor executor) {
+                System.out.println("拒绝了一个");
+                if (!executor.isShutdown()) {
+                    executor.execute(r);
+                }
+            }
+        });
         executor.setWaitForTasksToCompleteOnShutdown(true);
 
         return executor;
