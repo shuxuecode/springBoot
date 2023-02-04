@@ -40,11 +40,17 @@ class SpringbootSpringEventApplicationTests {
     void t3() throws InterruptedException {
         for (int i = 0; i < 10; i++) {
             final int num = i;
-            CompletableFuture.runAsync(() -> {
-                long start = System.currentTimeMillis();
-                testServiceAsync.publish("->" + num);
-                System.out.println("publish 耗时: " + (System.currentTimeMillis() - start));
-            });
+            // 异步并发
+            //CompletableFuture.runAsync(() -> {
+            //    long start = System.currentTimeMillis();
+            //    testServiceAsync.publish("->" + num);
+            //    System.out.println("publish 耗时: " + (System.currentTimeMillis() - start));
+            //});
+
+            // 同步并发
+            long start = System.currentTimeMillis();
+            testServiceAsync.publish("->" + num);
+            System.out.println("publish 耗时: " + (System.currentTimeMillis() - start));
         }
 
         Thread.sleep(15000);

@@ -42,7 +42,7 @@ public class TestListener implements ApplicationListener<TestEvent> {
         LOGGER.info("TestListener get msg = {}", msg);
         CompletableFuture.runAsync(() -> {
             try {
-                TimeUnit.SECONDS.sleep(1);
+                TimeUnit.SECONDS.sleep(5);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }

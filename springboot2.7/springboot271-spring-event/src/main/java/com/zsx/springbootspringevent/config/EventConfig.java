@@ -13,7 +13,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 /**
  * @date 2023/2/3
  */
-@Configuration
+//@Configuration
 public class EventConfig {
 
 
