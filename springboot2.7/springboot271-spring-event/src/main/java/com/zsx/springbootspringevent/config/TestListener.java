@@ -7,6 +7,10 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -20,6 +24,10 @@ import java.util.concurrent.TimeUnit;
 public class TestListener implements ApplicationListener<TestEvent> {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TestListener.class);
+
+    private static LinkedBlockingQueue<Runnable> queue = new LinkedBlockingQueue<>(1000);
+    private static ThreadPoolExecutor threadPool = new ThreadPoolExecutor(2, 4, 300, TimeUnit.SECONDS, queue);
+
 
     //@Override
     //public void onApplicationEvent(TestEvent event) {
@@ -42,13 +50,13 @@ public class TestListener implements ApplicationListener<TestEvent> {
         LOGGER.info("TestListener get msg = {}", msg);
         CompletableFuture.runAsync(() -> {
             try {
-                TimeUnit.SECONDS.sleep(5);
+                TimeUnit.SECONDS.sleep(2);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
 
             LOGGER.info("TestListener async msg = {}", msg);
-        });
+        }, threadPool);
 
     }
 }
