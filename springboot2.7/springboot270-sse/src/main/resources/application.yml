@@ -1,0 +1,11 @@
+
+
+server:
+  port: 9090
+
+
+
+spring:
+  web:
+    resources:
+      static-locations: classpath:/static/, classpath:/templates/
