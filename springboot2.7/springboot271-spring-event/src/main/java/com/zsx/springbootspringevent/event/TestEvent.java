@@ -2,8 +2,6 @@ package com.zsx.springbootspringevent.event;
 
 import org.springframework.context.ApplicationEvent;
 
-import java.time.Clock;
-
 /**
  * 自定义事件
  *
