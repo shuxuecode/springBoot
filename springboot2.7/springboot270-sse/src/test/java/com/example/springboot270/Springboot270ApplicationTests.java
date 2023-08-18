@@ -20,7 +20,9 @@ class Springboot270ApplicationTests {
         req.setId(1);
         req.setName("test");
 
-        demoService.getUuid(req);
+        String res = demoService.getUuid(req);
+
+        System.out.println("res : " + res);
     }
 
 

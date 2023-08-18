@@ -1,7 +1,6 @@
 package com.example.springboot270.config;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.JSONPath;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
@@ -16,9 +15,9 @@ import java.util.Arrays;
 /**
  * @date 2023/8/14
  */
-@Component
-@Aspect
-public class TestAspect {
+// @Component
+// @Aspect
+public class TestBeforeAspect {
 
 
     @Pointcut("@annotation(com.example.springboot270.config.anno.TestAnno)")
@@ -52,12 +51,6 @@ public class TestAspect {
 //
 //                     int duration = annotation.duration();
 //
-//                     // if (rdbTairService.exists("")) {
-//                     //     throw new KbtInteractionCenterException(null);
-//                     // }
-//                     //
-//                     // rdbTairService.setex("", duration, "");
-//
 //                     // todo zsx
 //                     // todo zsx
 //                     // todo zsx
@@ -70,14 +63,11 @@ public class TestAspect {
 //                         }
 //                     }
 //                     if (baseRequest != null) {
-//                         Long tbUserId = baseRequest.getTbUserId();
-//                         LoggerUtil.info(LOGGER, "RequestLimitAspect tbUserId={}", tbUserId);
 //                     }
 //
 //                 }
 //             }
 //         } catch (Exception e) {
-//             LoggerUtil.error(LOGGER, e, "RequestLimitAspect error={}", e);
 //         }
 //
 //
