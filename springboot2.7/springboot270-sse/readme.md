@@ -10,4 +10,6 @@ todo
 
 
 
+## SmartLifecycle 作用
+
 
