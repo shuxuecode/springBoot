@@ -12,8 +12,4 @@ mvn archetype:generate -DgroupId=com.zsx -DartifactId=springboot-mock -Darchetyp
 
 
 
-
-
-
 ```
-
