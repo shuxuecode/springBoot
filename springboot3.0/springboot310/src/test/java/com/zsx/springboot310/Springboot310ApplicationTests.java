@@ -1,5 +1,6 @@
 package com.zsx.springboot310;
 
+import com.zsx.springboot310.controller.DemoController;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,17 +14,25 @@ import java.util.Arrays;
 @SpringBootTest
 class Springboot310ApplicationTests {
 
-	@Autowired
-	Environment environment;
+    @Autowired
+    Environment environment;
 
-	@Test
-	void contextLoads() {
+    @Test
+    void contextLoads() {
 
-		String res = StringUtils.joinWith(",", "a", "b");
-		System.out.println(res);
+        String res = StringUtils.joinWith(",", "a", "b");
+        System.out.println(res);
 
-		String[] activeProfiles = environment.getActiveProfiles();
-		Arrays.stream(activeProfiles).forEach(System.out::println);
-	}
+        String[] activeProfiles = environment.getActiveProfiles();
+        Arrays.stream(activeProfiles).forEach(System.out::println);
+    }
+
+    @Autowired
+    DemoController demoController;
+
+    @Test
+    void t1() {
+        demoController.test();
+    }
 
 }
