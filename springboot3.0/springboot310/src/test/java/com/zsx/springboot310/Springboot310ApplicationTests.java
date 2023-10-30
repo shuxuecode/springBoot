@@ -1,5 +1,6 @@
 package com.zsx.springboot310;
 
+import com.zsx.springboot310.config.DemoConfig;
 import com.zsx.springboot310.controller.DemoController;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
@@ -14,6 +15,8 @@ import java.util.Arrays;
 @SpringBootTest
 class Springboot310ApplicationTests {
 
+    @Autowired
+    DemoConfig demoConfig;
     @Autowired
     Environment environment;
 
@@ -35,4 +38,8 @@ class Springboot310ApplicationTests {
         demoController.test();
     }
 
+    @Test
+    void t2() {
+        demoConfig.test();
+    }
 }
