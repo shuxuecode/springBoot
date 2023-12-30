@@ -8,5 +8,11 @@
 
 
 
+spring:
+  aop:
+    auto: true
+    proxy-target-class: true
+
+
 
 # todo zsx
