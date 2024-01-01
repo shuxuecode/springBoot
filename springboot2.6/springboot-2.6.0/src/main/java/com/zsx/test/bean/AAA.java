@@ -13,8 +13,8 @@ public class AAA {
     public class Aabcdefg implements Parent<String> {
 
         @Override
-        public boolean test(String s) {
-            return false;
+        public Object test(String s) {
+            return "入参是一个字符串";
         }
     }
 
@@ -23,8 +23,8 @@ public class AAA {
     public class Babcdefg implements Parent<Date> {
 
         @Override
-        public boolean test(Date date) {
-            return false;
+        public Object test(Date date) {
+            return "入参是一个日期类型";
         }
     }
 }

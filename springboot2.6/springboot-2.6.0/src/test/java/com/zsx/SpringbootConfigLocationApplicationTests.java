@@ -2,6 +2,7 @@ package com.zsx;
 
 import com.zsx.bean.TestBean;
 import com.zsx.service.DemoService;
+import com.zsx.test.bean.AAA;
 import com.zsx.test.bean.Parent;
 import com.zsx.test.bean.aaa.Anno;
 import org.junit.jupiter.api.Test;
@@ -10,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.Map;
 
 @SpringBootTest
@@ -64,6 +66,15 @@ class SpringbootConfigLocationApplicationTests {
             Parent parent = (Parent) obj;
 
             System.out.println(parent);
+
+            if (parent instanceof AAA.Aabcdefg) {
+                Object a = parent.test("a");
+                System.out.println(a);
+            } else if (parent instanceof AAA.Babcdefg) {
+                Object a = parent.test(new Date());
+                System.out.println(a);
+            }
+
         }
     }
 
