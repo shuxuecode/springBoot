@@ -1,4 +1,4 @@
-package com.zsx;
+package main.kotlin.zsx;
 
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;

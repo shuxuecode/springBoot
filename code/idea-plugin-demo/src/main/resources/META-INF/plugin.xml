@@ -30,7 +30,7 @@
     <!-- Add your actions here -->
     <group id="myPlugin.menu" text="menu" description="menu demo">
       <add-to-group group-id="MainMenu" anchor="last"/>
-      <action id="myPlugin.textBox" class="com.zsx.MyAction" text="TextBox"
+      <action id="myPlugin.textBox" class="main.kotlin.zsx.MyAction" text="TextBox"
               description="dddd" />
     </group>
   </actions>
