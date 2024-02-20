@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.Date;
+
 @SpringBootTest
 class Springboot320ApplicationTests {
 
@@ -14,7 +16,7 @@ class Springboot320ApplicationTests {
 
 	@Test
 	void contextLoads() {
-		demoService.getNow(null);
+		demoService.getNow(new Date());
 	}
 
 }
