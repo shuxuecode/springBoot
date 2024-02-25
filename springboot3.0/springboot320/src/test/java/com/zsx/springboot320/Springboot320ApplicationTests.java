@@ -1,5 +1,6 @@
 package com.zsx.springboot320;
 
+import com.zsx.springboot320.dto.RequestDTO;
 import com.zsx.springboot320.service.DemoService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,12 +12,17 @@ import java.util.Date;
 class Springboot320ApplicationTests {
 
 
-	@Autowired
-	DemoService demoService;
+    @Autowired
+    DemoService demoService;
 
-	@Test
-	void contextLoads() {
-		demoService.getNow(new Date());
-	}
+    @Test
+    void contextLoads() {
+        RequestDTO request = new RequestDTO();
+
+        request.setName("test");
+        request.setId(123);
+
+        demoService.getNow(request);
+    }
 
 }

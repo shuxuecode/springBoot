@@ -1,7 +1,5 @@
 package com.zsx.springboot320.config.aop;
 
-import com.alibaba.fastjson.JSONObject;
-import com.zsx.springboot320.dto.RequestDTO;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -15,11 +13,11 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 @EnableAspectJAutoProxy(proxyTargetClass = true)
-public class LogAspect {
+public class AnnoAspect {
 
 
     //@Pointcut("execution(* com.zsx.springboot320..*(..))")
-    @Pointcut("@annotation(com.zsx.springboot320.config.anno.MyLog)")
+    @Pointcut("@annotation(com.zsx.springboot320.config.anno.MyAnno)")
     public void point() {
     }
 
@@ -34,13 +32,6 @@ public class LogAspect {
 
                 System.out.println("class = " + arg.getClass().getName());
                 System.out.println("className = " + arg.getClass().getSimpleName());
-
-                if (arg instanceof RequestDTO requestDTO) {
-                    System.out.println(requestDTO.getName());
-                }
-
-                JSONObject jsonObject = JSONObject.parseObject(arg.toString());
-                System.out.println(jsonObject.toJSONString());
 
             }
         } catch (Throwable e) {

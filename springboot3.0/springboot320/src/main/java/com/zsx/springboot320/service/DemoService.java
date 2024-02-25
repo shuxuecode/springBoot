@@ -1,5 +1,8 @@
 package com.zsx.springboot320.service;
 
+import com.zsx.springboot320.config.anno.MyAnno;
+import com.zsx.springboot320.config.anno.MyLog;
+import com.zsx.springboot320.dto.RequestDTO;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -11,7 +14,9 @@ import java.util.Date;
 public class DemoService {
 
 
-    public Date getNow(Date date) {
+    @MyLog
+    @MyAnno
+    public Date getNow(RequestDTO requestDTO) {
         return new Date();
     }
 
