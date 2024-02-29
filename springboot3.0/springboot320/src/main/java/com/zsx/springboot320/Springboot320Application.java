@@ -1,11 +1,31 @@
 package com.zsx.springboot320;
 
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.context.annotation.FilterType;
+import org.z.s.x.springboot.config.ErrorTestConfig;
 
-@SpringBootApplication
+@SpringBootApplication(
+        exclude = {
+                DataSourceAutoConfiguration.class
+        }
+)
+
+@ComponentScan(
+        basePackages = {
+                "com.zsx.springboot320",
+                "org.z.s.x.springboot"
+        },
+        excludeFilters = {
+                @ComponentScan.Filter(
+                        type = FilterType.ASSIGNABLE_TYPE,
+                        value = {ErrorTestConfig.class})
+        }
+)
+
 // 开启AspectJ自动代理
 @EnableAspectJAutoProxy
 public class Springboot320Application {
