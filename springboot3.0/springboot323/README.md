@@ -1,4 +1,25 @@
-package com.zsx.springboot323.config;
+
+
+## 扫描自定义注解并注册为spring bean
+
+
+### 注解定义
+
+```java
+@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+public @interface CustomBean {
+
+    String value() default "";
+
+}
+```
+
+
+### 配置自定义注解扫描器
+
+```java
 
 import com.zsx.springboot323.config.anno.CustomBean;
 import org.springframework.beans.factory.config.BeanDefinition;
@@ -8,15 +29,8 @@ import org.springframework.context.annotation.ClassPathScanningCandidateComponen
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.type.filter.AnnotationTypeFilter;
 
-/**
- * 自定义Bean注解扫描配置
- *
- * @author zsx
- * @date 2024/3/12
- */
 @Configuration
 public class CustomBeanScanConfig {
-
 
     @Bean
     public BeanDefinitionRegistryPostProcessor beanDefinitionRegistryPostProcessor() {
@@ -49,3 +63,17 @@ public class CustomBeanScanConfig {
 
 
 }
+
+```
+
+### 使用自定义注解
+
+
+```java
+@CustomBean("demoService2")
+public class DemoService {
+
+}
+```
+
+
