@@ -2,12 +2,11 @@ package com.example.springboot270.config;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONPath;
+import com.example.springboot270.config.anno.TestAnno;
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
-import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Method;
 import java.util.Arrays;
@@ -20,12 +19,7 @@ import java.util.Arrays;
 public class TestBeforeAspect {
 
 
-    @Pointcut("@annotation(com.example.springboot270.config.anno.TestAnno)")
-    public void pointCut() {
-    }
-
-
-    @Before("pointCut()")
+    @Before("@annotation(com.example.springboot270.config.anno.TestAnno)")
     public void before(JoinPoint joinPoint) {
         MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
         Method method = methodSignature.getMethod();
@@ -43,34 +37,18 @@ public class TestBeforeAspect {
 
             System.out.println(JSONPath.extract(jsonString, "$.name"));
         }
-//
-//         try {
-//             RequestLimit annotation = method.getAnnotation(RequestLimit.class);
-//             if (annotation != null) {
-//                 if (annotation.enabled()) {
-//
-//                     int duration = annotation.duration();
-//
-//                     // todo zsx
-//                     // todo zsx
-//                     // todo zsx
-//
-//                     Object[] args = joinPoint.getArgs();
-//                     BaseRequest baseRequest = null;
-//                     for (Object arg : args) {
-//                         if (arg instanceof BaseRequest) {
-//                             baseRequest = (BaseRequest) arg;
-//                         }
-//                     }
-//                     if (baseRequest != null) {
-//                     }
-//
-//                 }
-//             }
-//         } catch (Exception e) {
-//         }
-//
-//
+
+        try {
+            TestAnno annotation = method.getAnnotation(TestAnno.class);
+            if (annotation != null) {
+
+                // 根据注解做一些处理
+                // todo zsx
+            }
+        } catch (Exception e) {
+        }
+
+
     }
 
 }

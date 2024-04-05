@@ -36,12 +36,13 @@ public class MySmartLifecycle implements SmartLifecycle {
     @Override
     public void stop(Runnable callback) {
         System.out.println("MySmartLifecycle stop");
-        SmartLifecycle.super.stop(callback);
+        callback.run();
     }
 
     @Override
     public int getPhase() {
         System.out.println("MySmartLifecycle getPhase");
-        return SmartLifecycle.super.getPhase();
+        // 返回阶段，决定启动和停止的顺序
+        return 0;
     }
 }
