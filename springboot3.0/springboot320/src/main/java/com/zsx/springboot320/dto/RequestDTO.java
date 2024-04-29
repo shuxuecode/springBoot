@@ -61,9 +61,6 @@ public class RequestDTO {
         this.age = age;
     }
 
-//    tostring
-
-
     @Override
     public String toString() {
 
