@@ -25,9 +25,8 @@ public class CustomBeanScanConfig {
             ClassPathScanningCandidateComponentProvider provider = new ClassPathScanningCandidateComponentProvider(false);
             provider.addIncludeFilter(new AnnotationTypeFilter(CustomBean.class));
 
-            // todo zsx
+            // todo 这里需要写死，或者从配置项中读取
             String basePackage = "com.zsx.springboot323";
-
 
             for (BeanDefinition beanDefinition : provider.findCandidateComponents(basePackage)) {
                 try {
