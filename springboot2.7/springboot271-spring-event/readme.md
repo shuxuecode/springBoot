@@ -8,17 +8,19 @@ todo
 
 ## 发布事件
 
+```JAVA
 @Autowired
 private ApplicationEventPublisher applicationEventPublisher;
 
 applicationEventPublisher.publishEvent(eventObject);
-
+```
 
 ## 
 
 
 ## 异步模式
 
+```JAVA
 @Configuration
 public class EventConfig {
 
@@ -42,6 +44,7 @@ public class EventConfig {
         return executor;
     }
 }
+```
 
 注入一个simpleApplicationEventMulticaster。将这个multicaster的taskexecutor设置为自定义的线程池。
 当publish event时，当前线程会到从线程池里来取线程，进行invoke listener，以及执行subscriber逻辑。
