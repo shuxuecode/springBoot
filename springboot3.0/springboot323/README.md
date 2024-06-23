@@ -77,3 +77,16 @@ public class DemoService {
 ```
 
 
+
+
+
+
+## 同名的bean注册时报错信息 
+
+
+```
+Caused by: org.springframework.context.annotation.ConflictingBeanDefinitionException: 
+    Annotation-specified bean name 'testServiceImpl' for bean 
+        class [com.zsx.springboot323.service.impl.TestServiceImpl] conflicts with existing, 
+            non-compatible bean definition of same name and class [com.zsx.springboot323.service.impl2.TestServiceImpl]
+```
