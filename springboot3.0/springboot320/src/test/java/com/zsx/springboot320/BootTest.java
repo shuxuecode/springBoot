@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 
+import java.util.Arrays;
+
 /**
  * @date 2024/2/26
  */
@@ -22,9 +24,17 @@ public class BootTest {
     @Test
     void t1() {
         String[] beans = applicationContext.getBeanDefinitionNames();
+        Arrays.sort(beans);
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println("beans.length = " + beans.length);
         for (String bean : beans) {
             System.out.println(bean);
         }
+        System.out.println();
+        System.out.println();
+        System.out.println();
     }
 
 
