@@ -37,4 +37,22 @@ todo
 ```
 
 
+## spring扫描时排除指定包下的类
+
+```java
+@ComponentScan(
+        basePackages = {
+                "com.zsx.springboot320",
+                "org.z.s.x.springboot"
+        },
+        excludeFilters = {
+                @ComponentScan.Filter(
+                        type = FilterType.REGEX,
+                        pattern = {"org\\.z\\.s\\.x\\.springboot\\.config\\.test\\.abc\\..*"}
+                )
+        }
+)
+```
+
+
 
