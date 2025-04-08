@@ -12,7 +12,7 @@
 
 - TuserMapper.xml
 
-```
+```XML
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zsx.dao.UserMapper">
@@ -122,7 +122,7 @@
 
 - UserMapper.java
 
-```
+```JAVA
 package com.zsx.dao;
 
 import com.zsx.entity.User;
@@ -152,7 +152,7 @@ public interface UserMapper {
 
 - UserDao.java
 
-```
+```JAVA
 package com.zsx.dao;
 
 import com.zsx.entity.User;
@@ -171,7 +171,7 @@ public interface UserDao extends UserMapper {
 
 - TuserMapperDao.xml
 
-```
+```XML
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zsx.dao.UserDao">
@@ -227,7 +227,7 @@ public interface UserDao extends UserMapper {
 
 - BaseDao.java
 
-```
+```JAVA
 package com.zsx.dao;
 
 import org.apache.ibatis.annotations.Param;
@@ -270,7 +270,7 @@ public interface BaseDao<E> {
 
 使用时只需在对应的mapper里面继承baseDao即可，如下：
 
-```
+```JAVA
 @Mapper
 public interface UserMapper extends BaseDao<User>{
 }
