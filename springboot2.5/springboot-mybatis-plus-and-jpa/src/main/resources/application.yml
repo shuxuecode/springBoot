@@ -9,10 +9,16 @@ server:
 
 spring:
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false
-    username: root
-    password: root
+    driver-class-name: org.apache.derby.jdbc.EmbeddedDriver
+    url: jdbc:derby:memory:myDB;create=true
+    username: sa
+    password:
+
+  jpa:
+    database-platform: org.hibernate.dialect.DerbyTenSevenDialect
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.DerbyTenSevenDialect
 
 
 
