@@ -1,5 +1,6 @@
 package com.springboot335.springboot335;
 
+import com.springboot335.springboot335.demo.DemoService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,6 +15,9 @@ class Springboot335ApplicationTests {
 
 	@Autowired
 	ApplicationContext applicationContext;
+
+	@Autowired
+	DemoService demoService;
 
 	@Test
 	void contextLoads() {
@@ -34,5 +38,12 @@ class Springboot335ApplicationTests {
 
 
 	}
+
+
+	@Test
+	void testGet() {
+        String testGet = demoService.testGet();
+        System.out.println(testGet);
+    }
 
 }
