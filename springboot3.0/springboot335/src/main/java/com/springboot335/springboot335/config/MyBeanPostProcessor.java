@@ -35,10 +35,14 @@ public class MyBeanPostProcessor implements BeanPostProcessor {
         Method[] declaredMethods = bean.getClass().getDeclaredMethods();
         for (Method declaredMethod : declaredMethods) {
             try {
-                System.out.println("declaredMethod = " + declaredMethod);
-                Object invoke = declaredMethod.invoke(bean, null);
 
-                System.out.println("invoke = " + invoke);
+                if (declaredMethod.getName().equals("testGet")) {
+                    System.out.println("declaredMethod = " + declaredMethod);
+                    Object invoke = declaredMethod.invoke(bean, null);
+
+                    System.out.println("invoke = " + invoke);
+                }
+
             } catch (IllegalAccessException e) {
                 throw new RuntimeException(e);
             } catch (InvocationTargetException e) {
