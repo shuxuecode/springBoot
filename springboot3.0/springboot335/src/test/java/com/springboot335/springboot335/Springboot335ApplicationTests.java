@@ -1,6 +1,7 @@
 package com.springboot335.springboot335;
 
 import com.springboot335.springboot335.demo.DemoService;
+import com.springboot335.springboot335.demo.TestComponent;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -46,4 +47,15 @@ class Springboot335ApplicationTests {
         System.out.println(testGet);
     }
 
+
+	@Test
+	void testTestComponent() {
+
+		TestComponent testComponent = applicationContext.getBean(TestComponent.class);
+
+		String testGet = testComponent.testGet();
+
+		System.out.println(testGet);
+
+	}
 }
