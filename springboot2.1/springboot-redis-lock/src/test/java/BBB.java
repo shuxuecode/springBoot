@@ -19,6 +19,12 @@ public class BBB {
         // 创建连接池
         JedisPool jedisPool = new JedisPool(poolConfig, "localhost", 6379);
 
+        System.out.println("jedisPool.getResource()1 = " + jedisPool.getResource());
+        System.out.println("jedisPool.getResource()2 = " + new JedisPool(poolConfig, "localhost", 6279).getResource());
+
+        System.out.println("jedisPool1 = " + jedisPool);
+        System.out.println("jedisPool2 = " + new JedisPool(poolConfig, "localhost", 6279));
+
         try (Jedis jedis = jedisPool.getResource()) {
             // 执行操作
             jedis.set("poolKey", "poolValue");
@@ -28,6 +34,7 @@ public class BBB {
         // 关闭连接池
         jedisPool.close();
     }
+
 
 
 
