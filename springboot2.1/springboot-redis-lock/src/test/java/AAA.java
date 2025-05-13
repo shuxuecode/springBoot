@@ -1,4 +1,5 @@
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.google.common.collect.Maps;
 
 import java.util.HashMap;
@@ -17,6 +18,13 @@ public class AAA {
         System.out.println(s);
 
 
+
+        String str = "{}";
+
+        JSONObject jsonObject = JSON.parseObject(str);
+
+        System.out.println(jsonObject.toJSONString());
+        System.out.println(JSON.toJSONString(jsonObject, true));
     }
 
 }
