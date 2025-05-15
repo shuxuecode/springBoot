@@ -6,8 +6,6 @@ import redis.clients.jedis.JedisPoolConfig;
 public class BBB {
 
 
-
-
     @Test
     public void test01() {
         // 配置连接池
@@ -43,9 +41,6 @@ public class BBB {
     }
 
 
-
-
-
     public static void main(String[] args) {
 
 
@@ -65,5 +60,20 @@ public class BBB {
 
     }
 
+    @Test
+    public void test02() {
+        Jedis jedis = new Jedis("localhost", 6379);
+
+        jedis.setbit("key", 0, true);
+        jedis.setbit("key", 2, true);
+        jedis.setbit("key", 5, true);
+
+        jedis.expire("key", 10);
+
+
+        boolean key = jedis.getbit("key", 0);
+
+
+    }
 
 }
