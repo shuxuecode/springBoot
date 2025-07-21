@@ -13,3 +13,22 @@ mvn archetype:generate -DgroupId=com.zsx -DartifactId=springboot-mock -Darchetyp
 
 
 ```
+
+
+
+
+## springboot 接入 postgresql
+
+
+
+## springboot 接入 sqlite
+
+
+
+## springboot 接入 swagger2
+
+
+## springboot 接入 mybatis plus
+
+
+todo
