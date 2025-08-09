@@ -8,6 +8,13 @@ spring:
     username: test
     password: test123456
     driver-class-name: org.postgresql.Driver
+
+    hikari:
+      minimum-idle: 5                                     # 最小空闲连接数
+      maximum-pool-size: 10                               # 最大连接池数
+      auto-commit: true                                   # 自动提交模式
+      pool-name: "HikariPool"                             # 连接池名称
+      connection-test-query: SELECT 1                     # 验证查询
   
   # JPA/Hibernate 配置
   jpa:
@@ -18,3 +25,5 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
+
+
