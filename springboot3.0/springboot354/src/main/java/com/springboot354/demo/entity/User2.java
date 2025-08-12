@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import org.apache.ibatis.type.JdbcType;
 
 import java.util.Date;
 
@@ -20,7 +21,7 @@ public class User2 {
     @TableField(select = true)
     private String password;
 
-    @TableField(value = "created_at")
+    @TableField(value = "created_at", jdbcType = JdbcType.TIMESTAMP)
     private Date createdTime;
 
 
