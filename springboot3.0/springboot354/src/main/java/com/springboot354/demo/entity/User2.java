@@ -9,19 +9,17 @@ import org.apache.ibatis.type.JdbcType;
 
 import java.util.Date;
 
-@TableName(value = "t_user")
+//@TableName(value = "t_user")
 public class User2 {
 
     @TableId(type = IdType.AUTO)
     private Long id;
 
-    @TableField(select = true)
     private String username;
 
-    @TableField(select = true)
     private String password;
 
-    @TableField(value = "created_at", jdbcType = JdbcType.TIMESTAMP)
+    //@TableField(value = "created_at", jdbcType = JdbcType.TIMESTAMP)
     private Date createdTime;
 
 
