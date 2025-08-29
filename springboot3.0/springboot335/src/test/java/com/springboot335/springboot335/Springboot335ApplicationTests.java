@@ -62,7 +62,8 @@ class Springboot335ApplicationTests {
 
 	@Test
 	void tt01() {
-		TestService testService = applicationContext.getBean(TestService.class);
+		//TestService testService = applicationContext.getBean(TestService.class);
+		TestService testService = applicationContext.getBean("newTestService", TestService.class);
 
 		testService.testGet(1);
 	}
