@@ -1,7 +1,12 @@
 package com.springboot335.springboot335.service;
 
+import org.springframework.retry.annotation.Backoff;
 import org.springframework.retry.annotation.Retryable;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 
 
 /**
@@ -20,11 +25,15 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-@Retryable(value = Exception.class)
+@Retryable(
+        value = Exception.class,
+        backoff = @Backoff(delay = 1000, multiplier = 2)
+)
 public class TestServiceImpl implements TestService {
     @Override
     public String testGet(Integer id) {
-        System.out.println("id = " + id);
+        String time = LocalDateTime.now(ZoneId.systemDefault()).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        System.out.println("time=" + time + "   " + "id = " + id);
         Integer.valueOf("a");
         return "get " + id;
     }
