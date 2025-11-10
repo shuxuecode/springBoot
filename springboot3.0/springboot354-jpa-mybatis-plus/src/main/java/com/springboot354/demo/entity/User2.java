@@ -1,25 +1,27 @@
 package com.springboot354.demo.entity;
 
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
-import org.apache.ibatis.type.JdbcType;
+import jakarta.persistence.*;
+import lombok.Data;
 
 import java.util.Date;
 
-//@TableName(value = "t_user")
-public class User2 {
+//@Data
+@Entity
+@Table(name = "t_user")
+public class User {
 
-    @TableId(type = IdType.AUTO)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false, unique = true)
     private String username;
 
+    @Column(nullable = false)
     private String password;
 
-    //@TableField(value = "created_at", jdbcType = JdbcType.TIMESTAMP)
+    @Column(nullable = false, name = "created_at")
     private Date createdTime;
 
 
