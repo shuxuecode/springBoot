@@ -7,5 +7,7 @@ public interface TestService {
     String testGet(Integer id);
 
 
+    String testGet2(Integer id);
+
 
 }

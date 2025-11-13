@@ -1,5 +1,6 @@
 package com.springboot335.springboot335.service;
 
+import com.springboot335.springboot335.demo.anno.Demo;
 import org.springframework.retry.annotation.Backoff;
 import org.springframework.retry.annotation.Retryable;
 import org.springframework.stereotype.Service;
@@ -31,10 +32,19 @@ import java.time.format.DateTimeFormatter;
 )
 public class TestServiceImpl implements TestService {
     @Override
+
     public String testGet(Integer id) {
         String time = LocalDateTime.now(ZoneId.systemDefault()).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         System.out.println("time=" + time + "   " + "id = " + id);
         Integer.valueOf("a");
         return "get " + id;
+    }
+
+
+    @Override
+    //@Demo(key = "'testDemo'")
+    @Demo(key = "'testDemo:' + #id", scene = "test")
+    public String testGet2(Integer id) {
+        return "";
     }
 }
