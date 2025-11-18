@@ -11,6 +11,10 @@
         <result property="createdTime" column="created_at" jdbcType="TIMESTAMP"/>
     </resultMap>
 
+    <select id="test" resultMap="r_m" parameterType="com.springboot354.demo.entity.User">
+        select * from t_user where username like CONCAT('%', #{username}, '%') and 1=1 limit 1
+    </select>
+
     <!-- 自定义 SQL -->
     <!--<select id="selectUsersByAgeRange" resultType="com.example.demo.entity.User">-->
     <!--    SELECT *-->
