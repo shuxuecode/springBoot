@@ -34,7 +34,34 @@ public class AAA {
     public void test() {
 
 
+        //String str = "{\"userName\":\"张三\",\"userAge\":18}";
+        String str = "{\"user_name\":\"张三1\",\"userName\":\"张三2\",\"user_age\":18}";
+
+        DDD ddd = JSON.parseObject(str, DDD.class);
+
+        System.out.println(JSON.toJSONString(ddd));
 
     }
 
+    public static class DDD {
+        private String userName;
+
+        private Integer userAge;
+
+        public String getUserName() {
+            return userName;
+        }
+
+        public void setUserName(String userName) {
+            this.userName = userName;
+        }
+
+        public Integer getUserAge() {
+            return userAge;
+        }
+
+        public void setUserAge(Integer userAge) {
+            this.userAge = userAge;
+        }
+    }
 }
