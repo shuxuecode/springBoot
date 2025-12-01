@@ -18,6 +18,11 @@ public class TaskService {
             e.printStackTrace();
         }
         log.info("task1, name={}", Thread.currentThread().getName());
+
+        if (1 == 1) {
+            throw new RuntimeException("task1 error");
+        }
+
         return CompletableFuture.completedFuture("task1");
     }
 

@@ -7,7 +7,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 
 @SpringBootApplication
 @EnableRetry
-@EnableAsync
+//@EnableAsync
 public class Springboot335Application {
 
 	public static void main(String[] args) {

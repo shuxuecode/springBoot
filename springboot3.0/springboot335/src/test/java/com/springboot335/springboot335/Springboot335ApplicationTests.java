@@ -13,6 +13,7 @@ import org.springframework.core.env.Environment;
 import java.util.Arrays;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.IntStream;
 
 @SpringBootTest
@@ -80,7 +81,9 @@ class Springboot335ApplicationTests {
 	@Test
 	void t02() throws ExecutionException, InterruptedException {
 
-		IntStream.rangeClosed(1, 100).forEach(item -> {
+		t03();
+
+		IntStream.rangeClosed(1, 10).forEach(item -> {
 			CompletableFuture.runAsync(() -> {
 				try {
 					t03();
@@ -91,6 +94,9 @@ class Springboot335ApplicationTests {
 				}
 			});
 		});
+
+
+		TimeUnit.SECONDS.sleep(5L);
 
 	}
 
