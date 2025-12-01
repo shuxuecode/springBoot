@@ -2,6 +2,7 @@ package com.springboot335.springboot335;
 
 import com.springboot335.springboot335.demo.DemoService;
 import com.springboot335.springboot335.demo.TestComponent;
+import com.springboot335.springboot335.service.TaskService;
 import com.springboot335.springboot335.service.TestService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,9 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.core.env.Environment;
 
 import java.util.Arrays;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
+import java.util.stream.IntStream;
 
 @SpringBootTest
 class Springboot335ApplicationTests {
@@ -20,6 +24,9 @@ class Springboot335ApplicationTests {
 
 	@Autowired
 	DemoService demoService;
+
+	@Autowired
+	TaskService taskService;
 
 	@Test
 	void contextLoads() {
@@ -67,5 +74,30 @@ class Springboot335ApplicationTests {
 
 		//testService.testGet(1);
 		testService.testGet2(1);
+	}
+
+
+	@Test
+	void t02() throws ExecutionException, InterruptedException {
+
+		IntStream.rangeClosed(1, 100).forEach(item -> {
+			CompletableFuture.runAsync(() -> {
+				try {
+					t03();
+				} catch (ExecutionException e) {
+					throw new RuntimeException(e);
+				} catch (InterruptedException e) {
+					throw new RuntimeException(e);
+				}
+			});
+		});
+
+	}
+
+	void t03() throws ExecutionException, InterruptedException {
+		CompletableFuture<String> future = taskService.task1();
+		String res = future.get();
+
+		System.out.println(res);
 	}
 }
