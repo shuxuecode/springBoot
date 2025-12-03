@@ -16,6 +16,12 @@ import org.springframework.expression.spel.support.StandardEvaluationContext;
 @Configuration
 @Aspect
 //@EnableAspectJAutoProxy(proxyTargetClass = true)
+@EnableAspectJAutoProxy(exposeProxy = true) // 启用 exposeProxy 并正确使用 AopContext.currentProxy()
+/*
+如果不加 exposeProxy = true，则无法使用 AopContext.currentProxy()
+报错：
+java.lang.IllegalStateException: Cannot find current proxy: Set 'exposeProxy' property on Advised to 'true' to make it available, and ensure that AopContext.currentProxy() is invoked in the same thread as the AOP invocation context.
+ */
 public class DemoAnnoAop {
 
     private final SpelExpressionParser spelExpressionParser = new SpelExpressionParser();

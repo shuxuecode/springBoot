@@ -23,8 +23,25 @@ public class AsyncConfig implements AsyncConfigurer {
         return executor;
     }
 
+    //@Override
+    //public AsyncUncaughtExceptionHandler getAsyncUncaughtExceptionHandler() {
+    //    return new CustomAsyncExceptionHandler();
+    //}
+
+    /**
+     * 自定义异步异常处理器
+     * <p>
+     * ***注意***：AsyncUncaughtExceptionHandler 只能处理返回类型为 void 的异步方法中未被捕获的异常。
+     * ***注意***：AsyncUncaughtExceptionHandler 只能处理返回类型为 void 的异步方法中未被捕获的异常。
+     * ***注意***：AsyncUncaughtExceptionHandler 只能处理返回类型为 void 的异步方法中未被捕获的异常。
+     *
+     * @return
+     */
     @Override
     public AsyncUncaughtExceptionHandler getAsyncUncaughtExceptionHandler() {
-        return new CustomAsyncExceptionHandler();
+        return (ex, method, params) -> {
+            System.out.println("Exception occurred in async method: " + method.getName() + ", params: " + params + ", message: " + ex.getMessage());
+        };
     }
+
 }

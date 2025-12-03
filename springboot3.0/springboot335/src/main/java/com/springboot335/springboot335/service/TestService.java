@@ -9,5 +9,4 @@ public interface TestService {
 
     String testGet2(Integer id);
 
-
 }
